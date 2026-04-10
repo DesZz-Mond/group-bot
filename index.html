@@ -1,1535 +1,635 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)">
-    <title>Універсальний Хаб Групи</title>
-
-    <script>
-        (function() {
-            const userAgent = navigator.userAgent.toLowerCase();
-            const isChromium = userAgent.includes('chrome') || userAgent.includes('edg') || userAgent.includes('opr') || userAgent.includes('opera');
-            if (!isChromium) {
-                document.documentElement.classList.add('no-liquid-glass-support');
-            }
-            
-            // ОПТИМІЗАЦІЯ ДЛЯ ANDROID
-            const isAndroid = /android/i.test(userAgent);
-            if (isAndroid) {
-                document.documentElement.classList.add('is-android');
-            }
-        })();
-    </script>
-
-    <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Правило ко Святому Причащению</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
-                    colors: {
-                        brand: { 50: '#eff6ff', 100: '#dbeafe', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 900: '#1e3a8a' },
-                    },
-                    animation: {
-                        'slide-up': 'slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'fade-in-up': 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'blob': 'blob 15s infinite alternate cubic-bezier(0.4, 0, 0.2, 1)',
-                    },
-                    keyframes: {
-                        slideUp: { '0%': { transform: 'translateY(20px)', opacity: 0 }, '100%': { transform: 'translateY(0)', opacity: 1 } },
-                        fadeInUp: { '0%': { transform: 'translateY(30px) scale(0.98)', opacity: 0 }, '100%': { transform: 'translateY(0) scale(1)', opacity: 1 } },
-                        blob: {
-                            '0%': { transform: 'translate3d(0px, 0px, 0) scale(1)' },
-                            '33%': { transform: 'translate3d(50px, -50px, 0) scale(1.05)' },
-                            '66%': { transform: 'translate3d(-30px, 40px, 0) scale(0.95)' },
-                            '100%': { transform: 'translate3d(0px, 0px, 0) scale(1)' }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        
-        body { 
-            -webkit-tap-highlight-color: transparent; 
-            overscroll-behavior-y: none;
+        body {
+            background-color: #fdfaf0;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: #1a1a1a;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
         }
         
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(156, 163, 175, 0.4); border-radius: 10px; }
-        .dark ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .custom-scroll::-webkit-scrollbar { width: 4px; }
-
-        .schedule-grid { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
-        @media (min-width: 768px) { .schedule-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; } }
-        @media (min-width: 1280px) { .schedule-grid { grid-template-columns: repeat(3, 1fr); } }
-
-        .pair-card {
-            border-left-width: 4px;
-            border-left-style: solid;
-        }
-        .pair-general { border-left-color: #6366f1; }
-        .pair-elective { border-left-color: #f59e0b; }
-        .pair-lang { border-left-color: #10b981; }
-
-        /* --- LIQUID GLASS --- */
-        :root {
-            --noise-bg: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+        .prayer-content {
+            font-size: 18px;
+            line-height: 1.6;
+            transition: font-size 0.2s ease;
         }
 
-        .liquid-glass {
-            position: relative;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 100%);
-            backdrop-filter: blur(24px) saturate(180%);
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 
-                inset 0 1px 1px rgba(255, 255, 255, 0.8),
-                0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            transform: translateZ(0);
-            overflow: hidden;
+        h1, h2, h3 {
+            color: #8b0000;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .prayer-content p {
+            margin-bottom: 0.8rem;
+            text-indent: 1.5rem;
+            text-align: justify;
         }
         
-        .liquid-glass::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: var(--noise-bg);
-            opacity: 0.8;
-            mix-blend-mode: overlay;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        html.dark .liquid-glass {
-            background: linear-gradient(135deg, rgba(30, 30, 35, 0.6) 0%, rgba(20, 20, 25, 0.4) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 
-                inset 0 1px 1px rgba(255, 255, 255, 0.15), 
-                0 8px 32px 0 rgba(0, 0, 0, 0.4);
-        }
-        html.dark .liquid-glass::before {
-            opacity: 0.4;
-            mix-blend-mode: soft-light;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(12px) saturate(120%);
-            -webkit-backdrop-filter: blur(12px) saturate(120%);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        html.dark .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        .glass-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 12px 24px -10px rgba(0,0,0,0.1);
-        }
-        html.dark .glass-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 12px 24px -10px rgba(0,0,0,0.4);
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .glass-input {
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-        }
-        html.dark .glass-input {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #f4f4f5;
-        }
-        html.dark .glass-input:focus { border-color: #6366f1; background: rgba(0,0,0,0.5); }
-
-        /* --- ANDROID ANTI-LAG CSS --- */
-        html.is-android .liquid-glass, 
-        html.is-android .glass-card, 
-        html.is-android .glass-input {
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-        }
-        html.is-android .liquid-glass { background: rgba(255, 255, 255, 0.95) !important; }
-        html.is-android.dark .liquid-glass { background: rgba(20, 20, 25, 0.95) !important; }
+        /* Указания и ремарки - красный курсив */
+        .r { color: #a02020; font-style: italic; }
         
-        html.is-android .glass-card { background: rgba(255, 255, 255, 0.9) !important; border-color: rgba(220, 226, 236, 0.8) !important; }
-        html.is-android.dark .glass-card { background: rgba(30, 30, 35, 0.9) !important; border-color: rgba(50, 50, 60, 0.8) !important; }
+        /* Заголовки и важные слова - красный жирный */
+        .b { color: #a02020; font-weight: 600; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .nav-bar {
+            background-color: #2c2c2c;
+            border-bottom: 3px solid #8b0000;
+        }
+
+        .nav-btn {
+            color: #e5e5e5;
+            transition: all 0.2s;
+        }
         
-        html.is-android .glass-input { background: rgba(255, 255, 255, 0.9) !important; }
-        html.is-android.dark .glass-input { background: rgba(20, 20, 25, 0.9) !important; }
-
-        html.is-android .animate-blob { display: none !important; }
-
-        .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 20px); }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        .animation-delay-2000 { animation-delay: 2s; }
-        .animation-delay-4000 { animation-delay: 4s; }
-
-        @media (max-width: 639px) {
-            .mobile-bottom-sheet { align-items: flex-end; padding: 0; }
-            .mobile-bottom-sheet > div { border-radius: 2.5rem 2.5rem 0 0; animation: sheetUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-            @keyframes sheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        .nav-btn:hover, .nav-btn.active {
+            color: #fff;
+            background-color: #8b0000;
         }
     </style>
 </head>
-<body class="text-slate-900 dark:text-zinc-100 transition-colors duration-500 antialiased h-screen overflow-hidden flex flex-col md:flex-row relative bg-slate-50 dark:bg-[#050508]">
+<body class="min-h-screen flex flex-col">
 
-    <!-- СИСТЕМА СПОВІЩЕНЬ (TOASTS) -->
-    <script>
-        window.showToast = function(msg, isError = false) {
-            const t = document.createElement('div');
-            t.className = `fixed top-6 right-4 md:right-8 p-4 rounded-2xl shadow-xl z-[999] text-sm font-bold text-white transition-all duration-500 transform -translate-y-[150%] opacity-0 flex items-center gap-3 ${isError ? 'bg-red-500 shadow-red-500/30' : 'bg-emerald-500 shadow-emerald-500/30'}`;
-            t.innerHTML = `<i class="ph-fill ${isError ? 'ph-warning-circle' : 'ph-check-circle'} text-xl"></i> <span>${msg}</span>`;
-            document.body.appendChild(t);
-            setTimeout(() => { t.style.transform = 'translateY(0)'; t.style.opacity = '1'; }, 10);
-            setTimeout(() => { 
-                t.style.transform = 'translateY(-150%)'; t.style.opacity = '0'; 
-                setTimeout(() => t.remove(), 500); 
-            }, 4000);
-        };
-    </script>
-
-    <!-- FIREBASE ХМАРНА СИНХРОНІЗАЦІЯ (ШАБЛОН) -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, deleteDoc, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        let db, auth, appId;
-
-        // ЗАГЛУШКА: Вставте свої дані Firebase сюди для роботи хмарної синхронізації
-        const myFirebaseConfig = {
-            apiKey: "ВСТАВТЕ_ВАШ_API_KEY",
-            authDomain: "project.firebaseapp.com",
-            projectId: "project",
-            storageBucket: "project.firebasestorage.app",
-            messagingSenderId: "0000000000",
-            appId: "1:00000000:web:0000000000",
-            measurementId: "G-0000000"
-        };
-
-        try {
-            let firebaseConfig = null;
-            
-            if (typeof __firebase_config !== 'undefined') {
-                firebaseConfig = JSON.parse(__firebase_config); 
-            } else if (myFirebaseConfig.apiKey && myFirebaseConfig.apiKey !== "ВСТАВТЕ_ВАШ_API_KEY") {
-                firebaseConfig = myFirebaseConfig; 
-            } else {
-                console.warn("Firebase не налаштовано! Додаток працює в локальному режимі.");
-            }
-
-            if (firebaseConfig) {
-                const app = initializeApp(firebaseConfig);
-                auth = getAuth(app);
-                db = getFirestore(app);
-                appId = typeof __app_id !== 'undefined' ? __app_id : 'group-hub-template';
-
-                const initAuth = async () => {
-                    try {
-                        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                            await signInWithCustomToken(auth, __initial_auth_token);
-                        } else {
-                            await signInAnonymously(auth);
-                        }
-                    } catch (err) {
-                        console.error("Помилка авторизації:", err);
-                    }
-                };
-
-                initAuth();
-
-                onAuthStateChanged(auth, (user) => {
-                    if (user) {
-                        try {
-                            onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'zoom_links'), (snapshot) => {
-                                let links = {};
-                                snapshot.forEach(doc => links[doc.id] = doc.data().url);
-                                window.updateCloudData('zoom', links);
-                            }, (err) => { console.error(err); });
-
-                            onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'homeworks'), (snapshot) => {
-                                let hw = [];
-                                snapshot.forEach(doc => hw.push(doc.data()));
-                                hw.sort((a, b) => b.id - a.id);
-                                window.updateCloudData('homeworks', hw);
-                            }, (err) => console.error(err));
-
-                            onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'materials'), (snapshot) => {
-                                let mat = [];
-                                snapshot.forEach(doc => pushData(mat, doc));
-                                function pushData(array, doc){ array.push(doc.data()); }
-                                mat.sort((a, b) => b.id - a.id);
-                                window.updateCloudData('materials', mat);
-                            }, (err) => console.error(err));
-                        } catch(e) {
-                            console.error("Firestore Listeners Error:", e);
-                        }
-                    }
-                });
-            }
-        } catch(e) {
-            console.warn("Firebase config error:", e);
-        }
-
-        window.saveToCloud = async (collectionName, docId, data) => {
-            if(!db) { return false; } // Fallback to local
-            if(!auth?.currentUser) { window.showToast("Ви не авторизовані в хмарі. Дані збережено лише локально!", true); return false; }
-            try { 
-                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', collectionName, docId.toString()), data); 
-                window.showToast("Успішно збережено в хмару!");
-                return true; 
-            } 
-            catch(e) { 
-                console.error("Firebase Write Error:", e); 
-                window.showToast("Помилка запису в хмару: Перевірте Rules!", true); 
-                return false; 
-            }
-        };
-
-        window.deleteFromCloud = async (collectionName, docId) => {
-            if(!db || !auth?.currentUser) { return false; } // Fallback to local
-            try { 
-                await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', collectionName, docId.toString())); 
-                window.showToast("Успішно видалено з хмари");
-                return true; 
-            } 
-            catch(e) { 
-                console.error(e); 
-                window.showToast("Помилка видалення в хмарі", true); 
-                return false; 
-            }
-        };
-    </script>
-
-    <!-- ФОНОВІ ЕЛЕМЕНТИ -->
-    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
-        <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] rounded-full bg-indigo-400/40 dark:bg-indigo-700/30 blur-[100px] animate-blob transform-gpu"></div>
-        <div class="absolute top-[20%] right-[-10%] w-[45vw] h-[45vw] max-w-[500px] max-h-[500px] rounded-full bg-purple-400/40 dark:bg-purple-800/30 blur-[100px] animate-blob animation-delay-2000 transform-gpu"></div>
-        <div class="absolute bottom-[-10%] left-[20%] w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] rounded-full bg-teal-400/30 dark:bg-teal-800/20 blur-[100px] animate-blob animation-delay-4000 transform-gpu"></div>
-    </div>
-
-    <!-- Екран авторизації -->
-    <div id="auth-screen" class="fixed inset-0 z-[200] bg-slate-100/30 dark:bg-black/40 backdrop-blur-md flex flex-col items-center justify-center p-4 sm:p-6 hidden">
-        
-        <button onclick="toggleDarkMode()" class="absolute top-6 right-6 w-12 h-12 rounded-full liquid-glass flex items-center justify-center text-slate-800 dark:text-slate-200 hover:scale-105 transition-transform z-50">
-            <i class="ph ph-moon text-2xl" id="auth-dark-icon"></i>
-        </button>
-
-        <div class="w-full max-w-md liquid-glass text-center animate-slide-up flex flex-col p-8 sm:p-10 relative">
-            <div class="w-24 h-24 bg-gradient-to-tr from-indigo-500 to-violet-500 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg transform rotate-3 shrink-0 relative z-10">
-                <span class="text-5xl drop-shadow-md">🚀</span>
+    <nav class="nav-bar fixed top-0 w-full z-50 shadow-lg">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center px-2">
+            <div class="flex w-full sm:w-auto overflow-x-auto">
+                <button onclick="switchTab('canons')" id="btn-canons" class="nav-btn active flex-1 sm:flex-none px-4 py-3 text-sm sm:text-base font-semibold whitespace-nowrap">Три канона</button>
+                <button onclick="switchTab('posledovanie')" id="btn-posledovanie" class="nav-btn flex-1 sm:flex-none px-4 py-3 text-sm sm:text-base font-semibold whitespace-nowrap">Последование</button>
+                <button onclick="switchTab('molitvy')" id="btn-molitvy" class="nav-btn flex-1 sm:flex-none px-4 py-3 text-sm sm:text-base font-semibold whitespace-nowrap">Молитвы</button>
             </div>
-            <h1 class="text-3xl font-extrabold mb-2 tracking-tight text-slate-900 dark:text-white relative z-10">Портал Групи</h1>
-            <p class="text-slate-600 dark:text-slate-400 text-sm mb-8 font-bold shrink-0 relative z-10">Знайдіть себе у списку для входу</p>
-            
-            <div class="relative text-left shrink-0 mb-2 z-10">
-                <i class="ph ph-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-xl text-slate-500 dark:text-slate-400"></i>
-                <input type="text" id="auth-search" oninput="filterAuthList()" placeholder="Пошук ПІБ..." 
-                    class="w-full pl-12 pr-4 py-4 glass-input rounded-2xl outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-bold text-slate-900 dark:text-white placeholder-slate-500 shadow-sm">
+            <div class="hidden sm:flex items-center space-x-2 px-4 py-2">
+                <span class="text-gray-300 text-sm mr-2">Шрифт:</span>
+                <button onclick="adjustFontSize(-2)" class="text-white hover:text-red-400 font-bold px-2 py-1 bg-gray-700 rounded rounded-md">A-</button>
+                <button onclick="adjustFontSize(2)" class="text-white hover:text-red-400 font-bold px-2 py-1 bg-gray-700 rounded rounded-md">A+</button>
             </div>
-
-            <div id="auth-list" class="mt-2 max-h-[35vh] overflow-y-auto custom-scroll rounded-2xl glass-input flex-col gap-1 p-2 hidden z-10"></div>
-        </div>
-    </div>
-
-    <!-- SIDEBAR (ДЛЯ ПК) -->
-    <aside class="hidden md:flex flex-col w-72 liquid-glass border-l-0 border-y-0 h-full relative z-40 transition-colors" style="border-radius: 0 32px 32px 0;">
-        <div class="p-6 border-b border-slate-300/50 dark:border-white/10 relative z-10">
-            <div class="flex items-center gap-3 mb-6">
-                <div class="w-10 h-10 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-xl flex items-center justify-center text-white shadow-md hover:scale-105 transition-transform cursor-pointer">
-                    <span class="text-lg font-black">Х</span>
-                </div>
-                <div>
-                    <h1 class="font-extrabold text-lg tracking-tight leading-none text-slate-900 dark:text-white">Хаб</h1>
-                    <span class="text-[10px] font-extrabold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">Шаблон</span>
-                </div>
-            </div>
-            
-            <div class="glass-card p-3 rounded-2xl flex items-center gap-3">
-                <div id="pc-user-avatar" class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-400 flex items-center justify-center font-black text-sm shrink-0 border border-indigo-200 dark:border-indigo-500/20"></div>
-                <div class="overflow-hidden">
-                    <div id="pc-user-name" class="text-xs font-extrabold truncate text-slate-900 dark:text-zinc-100"></div>
-                    <div id="pc-user-role" class="text-[10px] font-bold text-slate-600 dark:text-slate-400">Студент</div>
-                </div>
-            </div>
-        </div>
-
-        <nav class="flex-1 overflow-y-auto p-4 space-y-1 custom-scroll relative z-10">
-            <p class="px-4 text-[10px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 mt-2">Розклад</p>
-            <button onclick="switchView('schedule')" id="nav-pc-schedule" class="nav-btn-pc w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all">
-                <i class="ph ph-user text-xl"></i> Мій Розклад
-            </button>
-            <button onclick="switchView('main')" id="nav-pc-main" class="nav-btn-pc w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all">
-                <i class="ph ph-calendar-blank text-xl"></i> Основний
-            </button>
-            <button onclick="switchView('lectures')" id="nav-pc-lectures" class="nav-btn-pc w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all">
-                <i class="ph ph-books text-xl"></i> Начитка
-            </button>
-
-            <p class="px-4 text-[10px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 mt-6">Ресурси</p>
-            <button onclick="switchView('homework')" id="nav-pc-homework" class="nav-btn-pc w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all">
-                <i class="ph ph-pencil-simple-line text-xl"></i> Завдання
-            </button>
-            <button onclick="switchView('materials')" id="nav-pc-materials" class="nav-btn-pc w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all">
-                <i class="ph ph-folder text-xl"></i> Матеріали
-            </button>
-            <button onclick="switchView('register')" id="nav-pc-register" class="nav-btn-pc w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all">
-                <i class="ph ph-users text-xl"></i> Список
-            </button>
-        </nav>
-
-        <div class="p-4 border-t border-slate-300/50 dark:border-white/10 flex gap-2 relative z-10">
-            <button onclick="toggleDarkMode()" class="flex-1 py-3 rounded-xl glass-card text-slate-800 dark:text-slate-300 hover:text-indigo-600 transition-all flex items-center justify-center gap-2 font-bold text-xs">
-                <i class="ph ph-moon text-lg" id="pc-dark-icon"></i> Тема
-            </button>
-            <button onclick="logout()" class="py-3 px-4 rounded-xl bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400 hover:bg-red-100 transition-all flex items-center justify-center border border-red-200 dark:border-red-500/20">
-                <i class="ph ph-sign-out text-lg"></i>
-            </button>
-        </div>
-    </aside>
-
-    <!-- ГОЛОВНА РОБОЧА ЗОНА -->
-    <div class="flex-1 flex flex-col h-full relative overflow-hidden z-10">
-        
-        <!-- МОБІЛЬНИЙ ХЕДЕР -->
-        <header class="md:hidden liquid-glass sticky top-0 z-30 px-4 py-3 flex justify-between items-center safe-top rounded-t-none mb-2 mx-2 mt-2" style="border-radius: 0 0 32px 32px;">
-            <div class="flex items-center gap-3 relative z-10">
-                <div class="w-8 h-8 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-lg flex items-center justify-center text-white shadow-sm">
-                    <span class="text-sm font-black">Х</span>
-                </div>
-                <div>
-                    <h1 class="font-extrabold text-sm tracking-tight leading-none text-slate-900 dark:text-zinc-100">Група</h1>
-                </div>
-            </div>
-            <div class="flex items-center gap-2 relative z-10">
-                <button onclick="toggleDarkMode()" class="w-9 h-9 rounded-full glass-card flex items-center justify-center text-slate-800 dark:text-slate-300 hover:text-indigo-600 transition-colors border-none">
-                    <i class="ph ph-moon text-lg" id="mob-dark-icon"></i>
-                </button>
-                <div id="mob-user-avatar" onclick="logout()" class="w-9 h-9 rounded-full bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/30 flex items-center justify-center font-black text-xs cursor-pointer shadow-sm"></div>
-            </div>
-        </header>
-
-        <!-- ЗОНА КОНТЕНТУ -->
-        <main class="flex-1 overflow-y-auto custom-scroll p-4 sm:p-6 lg:p-8 pb-32 md:pb-8 relative scroll-smooth" id="main-scroll-area">
-            
-            <!-- Live Widget -->
-            <div id="live-widget" class="liquid-glass p-6 sm:p-8 mb-8 relative group transition-all duration-300" style="border-radius: 32px;">
-                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
-                    <div class="flex items-center gap-5 w-full">
-                        <div class="relative w-16 h-16 shrink-0">
-                            <div class="absolute inset-0 bg-indigo-500 rounded-2xl animate-pulse opacity-30"></div>
-                            <div class="absolute inset-0 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-2xl flex items-center justify-center text-white shadow-lg border border-indigo-400/50">
-                                <i class="ph ph-lightning text-3xl"></i>
-                            </div>
-                        </div>
-                        <div class="min-w-0">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="relative flex h-2 w-2">
-                                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                                </span>
-                                <h3 class="text-slate-700 dark:text-slate-400 text-[10px] font-extrabold uppercase tracking-[0.2em]">Поточний статус</h3>
-                            </div>
-                            <div id="current-pair-text" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-zinc-100 leading-tight truncate">...</div>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card px-8 py-4 rounded-2xl text-center min-w-[180px] w-full md:w-auto">
-                        <p id="timer-label" class="text-[9px] font-extrabold uppercase tracking-widest text-slate-600 dark:text-slate-400 mb-1">До події</p>
-                        <p id="elapsed-timer" class="text-3xl font-mono font-black text-indigo-700 dark:text-indigo-400 tracking-tight">00:00:00</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ЗОНИ ВКЛАДОК -->
-            <div id="views-container">
-                
-                <!-- ПЕРСОНАЛЬНИЙ РОЗКЛАД -->
-                <div id="view-schedule" class="tab-content active">
-                    <div class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4 relative z-10">
-                        <div>
-                            <span id="date-today-label" class="text-[11px] font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2 block">Сьогодні</span>
-                            <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white" id="active-student-name-title">Розклад</h2>
-                        </div>
-                        <div class="flex glass-card p-1.5 rounded-xl w-full md:w-auto">
-                            <button onclick="setPersonalMode('lectures')" id="btn-mode-lec" class="flex-1 md:flex-none px-6 py-2.5 rounded-lg text-[11px] font-bold uppercase transition-all duration-300">Начитка</button>
-                            <button onclick="setPersonalMode('main')" id="btn-mode-main" class="flex-1 md:flex-none px-6 py-2.5 rounded-lg text-[11px] font-bold uppercase transition-all duration-300">Основний</button>
-                        </div>
-                    </div>
-                    <div id="personal-week-area" class="mb-6 relative z-10"></div>
-                    <div id="schedule-grid" class="schedule-grid"></div>
-                </div>
-
-                <!-- ОСНОВНИЙ РОЗКЛАД -->
-                <div id="view-main" class="tab-content">
-                    <div class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4 relative z-10">
-                        <div>
-                            <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-1">Основний</h2>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 font-bold">Загальний розклад групи</p>
-                        </div>
-                        <div class="flex glass-card p-1.5 rounded-xl w-full md:w-auto" id="main-week-toggle">
-                            <button onclick="setMainViewWeek('upper')" id="btn-upper" class="flex-1 md:flex-none px-6 py-2.5 rounded-lg text-[11px] font-bold uppercase transition-all duration-300">Верхній</button>
-                            <button onclick="setMainViewWeek('lower')" id="btn-lower" class="flex-1 md:flex-none px-6 py-2.5 rounded-lg text-[11px] font-bold uppercase transition-all duration-300">Нижній</button>
-                        </div>
-                    </div>
-                    
-                    <!-- КАЛЕНДАР ТИЖНІВ -->
-                    <div class="mb-8 relative z-10 w-full overflow-hidden">
-                        <h3 class="text-[10px] font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-3 ml-2 flex items-center gap-2">
-                            <i class="ph-fill ph-calendar-check text-indigo-500 text-sm"></i> Вибір тижня (для ДЗ)
-                        </h3>
-                        <div class="flex gap-3 overflow-x-auto custom-scroll pb-4 px-2 snap-x" id="main-weeks-container">
-                            
-                            <!-- Приклад генерації карток тижнів -->
-                            <div data-week="1" onclick="setMainSpecificWeek(1, 'upper')" class="week-card snap-start shrink-0 cursor-pointer liquid-glass hover:bg-white/60 dark:hover:bg-white/5 hover:-translate-y-1 transition-all duration-300 p-4 rounded-2xl border-l-4 border-l-indigo-400 flex flex-col min-w-[130px] shadow-sm group">
-                                <div class="flex justify-between items-start mb-1">
-                                    <span class="text-2xl font-black text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">1</span>
-                                    <i class="ph-fill ph-arrow-circle-up text-indigo-500 text-lg opacity-80 group-hover:opacity-100 transition-opacity"></i>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase tracking-widest text-indigo-600 mb-1.5">Верхній</span>
-                                <span class="text-[9px] font-bold text-slate-500">Тиждень 1</span>
-                            </div>
-
-                            <div data-week="2" onclick="setMainSpecificWeek(2, 'lower')" class="week-card snap-start shrink-0 cursor-pointer liquid-glass hover:bg-white/60 dark:hover:bg-white/5 hover:-translate-y-1 transition-all duration-300 p-4 rounded-2xl border-l-4 border-l-teal-400 flex flex-col min-w-[130px] shadow-sm group">
-                                <div class="flex justify-between items-start mb-1">
-                                    <span class="text-2xl font-black text-slate-900 dark:text-white group-hover:text-teal-600 transition-colors">2</span>
-                                    <i class="ph-fill ph-arrow-circle-down text-teal-500 text-lg opacity-80 group-hover:opacity-100 transition-opacity"></i>
-                                </div>
-                                <span class="text-[10px] font-extrabold uppercase tracking-widest text-teal-600 mb-1.5">Нижній</span>
-                                <span class="text-[9px] font-bold text-slate-500">Тиждень 2</span>
-                            </div>
-                            
-                        </div>
-                    </div>
-
-                    <div id="main-schedule-grid" class="schedule-grid"></div>
-                </div>
-
-                <!-- НАЧИТКА -->
-                <div id="view-lectures" class="tab-content">
-                    <div class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4 relative z-10">
-                        <div>
-                            <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-1">Начитка</h2>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 font-bold">Розклад спеціальних тижнів</p>
-                        </div>
-                        <div id="week-selector-gen" class="flex gap-2 p-1.5 glass-card rounded-xl overflow-x-auto w-full md:w-auto no-scrollbar"></div>
-                    </div>
-                    <div id="general-schedule-grid" class="schedule-grid"></div>
-                </div>
-
-                <!-- ГРУПА -->
-                <div id="view-register" class="tab-content">
-                    <div class="mb-8 relative z-10">
-                        <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-1">Список групи</h2>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 font-bold">Студенти та їх підгрупи</p>
-                    </div>
-                    
-                    <div class="liquid-glass overflow-hidden" style="border-radius: 32px;">
-                        <div class="p-6 border-b border-slate-300/50 dark:border-white/5 flex flex-col md:flex-row gap-4 relative z-10">
-                            <div class="relative flex-1">
-                                <i class="ph ph-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-lg"></i>
-                                <input type="text" id="global-search" oninput="handleSearch()" placeholder="Пошук студента..." class="w-full pl-12 pr-4 py-3 glass-input text-slate-900 dark:text-white rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-indigo-500 transition shadow-sm">
-                            </div>
-                            <select id="lang-filter" onchange="handleSearch()" class="py-3 px-4 glass-input text-slate-900 dark:text-white rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm cursor-pointer min-w-[200px] appearance-none">
-                                <option value="all" class="bg-white dark:bg-zinc-900">Всі студенти</option>
-                                <option value="підгрупа_а" class="bg-white dark:bg-zinc-900">Підгрупа А</option>
-                                <option value="підгрупа_б" class="bg-white dark:bg-zinc-900">Підгрупа Б</option>
-                                <option value="вибірковий_1" class="bg-white dark:bg-zinc-900">Вибірковий предмет</option>
-                            </select>
-                        </div>
-                        <div class="overflow-x-auto relative z-10 p-2">
-                            <table class="w-full text-left mobile-stack-table">
-                                <tbody id="reg-table-body" class="divide-y divide-slate-300/50 dark:divide-white/5"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ІСТОРІЯ ДЗ -->
-                <div id="view-homework" class="tab-content">
-                    <div class="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 relative z-10">
-                        <div>
-                            <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-1">Завдання</h2>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 font-bold">Стрічка доданих домашніх завдань</p>
-                        </div>
-                    </div>
-                    <div id="homework-history-list" class="space-y-4"></div>
-                </div>
-
-                <!-- МАТЕРІАЛИ -->
-                <div id="view-materials" class="tab-content">
-                    <div class="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 relative z-10">
-                        <div>
-                            <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-1">Матеріали</h2>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 font-bold">Корисні посилання, диски, документи</p>
-                        </div>
-                        <button onclick="openMaterialModal()" class="w-full sm:w-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-float transition-all flex items-center justify-center gap-2 hover:-translate-y-1">
-                            <i class="ph ph-plus-circle text-lg"></i> Додати матеріал
-                        </button>
-                    </div>
-                    <div class="flex gap-2 mb-8 overflow-x-auto custom-scroll pb-2 relative z-10" id="material-filters"></div>
-                    <div id="materials-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5"></div>
-                </div>
-
-            </div> 
-        </main>
-    </div>
-
-    <!-- Мобільний Bottom Navigation -->
-    <nav class="md:hidden fixed bottom-4 left-4 right-4 liquid-glass z-50 safe-bottom" style="border-radius: 24px;">
-        <div class="flex justify-around items-center px-2 py-2 relative z-10">
-            <button onclick="switchView('schedule')" id="nav-mob-schedule" class="nav-btn-mob flex flex-col items-center p-2 rounded-xl transition-colors text-slate-600 dark:text-slate-400 w-16">
-                <i class="ph ph-user text-2xl mb-1 transition-transform duration-300"></i>
-                <span class="text-[8px] font-extrabold uppercase tracking-tight">Мій</span>
-            </button>
-            <button onclick="switchView('main')" id="nav-mob-main" class="nav-btn-mob flex flex-col items-center p-2 rounded-xl transition-colors text-slate-600 dark:text-slate-400 w-16">
-                <i class="ph ph-calendar-blank text-2xl mb-1 transition-transform duration-300"></i>
-                <span class="text-[8px] font-extrabold uppercase tracking-tight">Осн.</span>
-            </button>
-            <button onclick="switchView('lectures')" id="nav-mob-lectures" class="nav-btn-mob flex flex-col items-center p-2 rounded-xl transition-colors text-slate-600 dark:text-slate-400 w-16">
-                <i class="ph ph-books text-2xl mb-1 transition-transform duration-300"></i>
-                <span class="text-[8px] font-extrabold uppercase tracking-tight">Нач.</span>
-            </button>
-            <button onclick="switchView('homework')" id="nav-mob-homework" class="nav-btn-mob flex flex-col items-center p-2 rounded-xl transition-colors text-slate-600 dark:text-slate-400 w-16">
-                <i class="ph ph-pencil-simple-line text-2xl mb-1 transition-transform duration-300"></i>
-                <span class="text-[8px] font-extrabold uppercase tracking-tight">Д/з</span>
-            </button>
-            <button onclick="switchView('materials')" id="nav-mob-materials" class="nav-btn-mob flex flex-col items-center p-2 rounded-xl transition-colors text-slate-600 dark:text-slate-400 w-16">
-                <i class="ph ph-folder text-2xl mb-1 transition-transform duration-300"></i>
-                <span class="text-[8px] font-extrabold uppercase tracking-tight">Мат.</span>
-            </button>
-            <button onclick="switchView('register')" id="nav-mob-register" class="nav-btn-mob flex flex-col items-center p-2 rounded-xl transition-colors text-slate-600 dark:text-slate-400 w-16">
-                <i class="ph ph-users text-2xl mb-1 transition-transform duration-300"></i>
-                <span class="text-[8px] font-extrabold uppercase tracking-tight">Група</span>
-            </button>
         </div>
     </nav>
 
-    <!-- Модалка ДЗ -->
-    <div id="hw-modal" class="fixed inset-0 z-[200] bg-slate-900/50 flex items-center justify-center p-4 mobile-bottom-sheet hidden backdrop-blur-sm transition-opacity">
-        <div class="w-full max-w-md liquid-glass p-6 sm:p-8 relative" style="border-radius: 32px;">
-            <button onclick="closeHwModal()" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full glass-card text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition z-10">
-                <i class="ph ph-x font-bold"></i>
-            </button>
-            <div class="relative z-10">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 bg-indigo-100 dark:bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20">
-                        <i class="ph ph-pencil-simple text-xl"></i>
-                    </div>
-                    <h2 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Додати ДЗ</h2>
-                </div>
-                <p id="hw-modal-title" class="text-indigo-800 dark:text-indigo-300 font-bold text-xs mb-4 px-3 py-2 bg-indigo-50/80 dark:bg-indigo-500/10 rounded-lg inline-block border border-indigo-200 dark:border-indigo-500/20"></p>
-                <textarea id="hw-textarea" placeholder="Опишіть завдання..." class="w-full p-4 glass-input text-slate-900 dark:text-white rounded-2xl outline-none focus:ring-2 focus:ring-indigo-500 transition font-medium text-sm h-32 resize-none mb-4 custom-scroll placeholder-slate-500 shadow-sm"></textarea>
-                <div class="mb-6">
-                    <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2 ml-1">Дедлайн <span class="text-slate-400 dark:text-slate-500 lowercase">(необов'язково)</span></label>
-                    <input type="text" id="hw-deadline" placeholder="Напр. 25.02 або Наступна пара" class="w-full p-3.5 glass-input text-slate-900 dark:text-white rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 transition font-bold text-sm placeholder-slate-500 shadow-sm">
-                </div>
-                <div class="flex gap-3">
-                    <button onclick="closeHwModal()" class="flex-1 py-3.5 rounded-xl font-bold text-sm glass-card text-slate-800 dark:text-slate-300 hover:text-indigo-600 transition border-none">Скасувати</button>
-                    <button onclick="saveHw()" class="flex-1 py-3.5 rounded-xl font-bold text-sm bg-indigo-600 text-white hover:bg-indigo-700 transition shadow-float hover:-translate-y-0.5">Зберегти</button>
-                </div>
-            </div>
-        </div>
+    <div class="sm:hidden fixed bottom-4 right-4 z-50 flex flex-col space-y-2 opacity-80">
+        <button onclick="adjustFontSize(2)" class="w-10 h-10 rounded-full bg-[#8b0000] text-white font-bold shadow-lg flex items-center justify-center">A+</button>
+        <button onclick="adjustFontSize(-2)" class="w-10 h-10 rounded-full bg-[#2c2c2c] text-white font-bold shadow-lg flex items-center justify-center">A-</button>
     </div>
 
-    <!-- Модалка Матеріалів -->
-    <div id="material-modal" class="fixed inset-0 z-[200] bg-slate-900/50 flex items-center justify-center p-4 mobile-bottom-sheet hidden backdrop-blur-sm transition-opacity">
-        <div class="w-full max-w-md liquid-glass p-6 sm:p-8 relative" style="border-radius: 32px;">
-            <button onclick="closeMaterialModal()" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full glass-card text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition z-10">
-                <i class="ph ph-x font-bold"></i>
-            </button>
-            <div class="relative z-10">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 bg-indigo-100 dark:bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-700 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/20">
-                        <i class="ph ph-link text-xl"></i>
-                    </div>
-                    <h2 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Додати матеріал</h2>
-                </div>
-                <div class="space-y-4 mb-8">
-                    <div>
-                        <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2 ml-1">Назва</label>
-                        <input type="text" id="mat-title" placeholder="Коротко і зрозуміло..." class="w-full p-3.5 glass-input text-slate-900 dark:text-white rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 transition font-bold text-sm placeholder-slate-500 shadow-sm">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2 ml-1">Посилання (URL)</label>
-                        <input type="url" id="mat-url" placeholder="https://..." class="w-full p-3.5 glass-input text-slate-900 dark:text-white rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 transition font-medium text-sm placeholder-slate-500 shadow-sm">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2 ml-1">Дисципліна</label>
-                        <!-- ШАБЛОН: Замініть на власні предмети -->
-                        <select id="mat-subj" class="w-full p-3.5 glass-input text-slate-900 dark:text-white rounded-xl outline-none focus:ring-2 focus:ring-indigo-500 transition font-bold text-sm shadow-sm cursor-pointer appearance-none">
-                            <option value="Загальне" class="bg-white dark:bg-zinc-900">Загальне (Орг. питання)</option>
-                            <option value="Математика" class="bg-white dark:bg-zinc-900">Математика</option>
-                            <option value="Фізика" class="bg-white dark:bg-zinc-900">Фізика</option>
-                            <option value="Іноземна мова" class="bg-white dark:bg-zinc-900">Іноземна мова</option>
-                            <option value="Програмування" class="bg-white dark:bg-zinc-900">Програмування</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="flex gap-3">
-                    <button onclick="closeMaterialModal()" class="flex-1 py-3.5 rounded-xl font-bold text-sm glass-card text-slate-800 dark:text-slate-300 hover:text-indigo-600 transition border-none">Скасувати</button>
-                    <button onclick="saveMaterial()" class="flex-1 py-3.5 rounded-xl font-bold text-sm bg-indigo-600 text-white hover:bg-indigo-700 transition shadow-float hover:-translate-y-0.5">Зберегти</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <main class="flex-grow pt-24 pb-12 px-4 sm:px-6 max-w-4xl mx-auto w-full">
+        <div id="prayer-container" class="prayer-content bg-white shadow-xl rounded-lg p-6 sm:p-10 border border-[#e5d9c5]">
 
-    <!-- Модалка Zoom -->
-    <div id="zoom-modal" class="fixed inset-0 z-[200] bg-slate-900/50 flex items-center justify-center p-4 mobile-bottom-sheet hidden backdrop-blur-sm transition-opacity">
-        <div class="w-full max-w-md liquid-glass p-6 sm:p-8 relative" style="border-radius: 32px;">
-            <button onclick="closeZoomModal()" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full glass-card text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition z-10">
-                <i class="ph ph-x font-bold"></i>
-            </button>
-            <div class="relative z-10">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 bg-blue-100 dark:bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20">
-                        <i class="ph ph-video-camera text-xl"></i>
-                    </div>
-                    <h2 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Налаштування Zoom</h2>
-                </div>
-                <p id="zoom-modal-title" class="text-blue-800 dark:text-blue-300 font-bold text-xs mb-4 px-3 py-2 bg-blue-50/80 dark:bg-blue-500/10 rounded-lg inline-block border border-blue-200 dark:border-blue-500/20"></p>
-                <div class="mb-6">
-                    <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2 ml-1">Посилання (URL)</label>
-                    <input type="url" id="zoom-url-input" placeholder="https://zoom.us/j/..." class="w-full p-3.5 glass-input text-slate-900 dark:text-white rounded-xl outline-none focus:ring-2 focus:ring-blue-500 transition font-medium text-sm placeholder-slate-500 shadow-sm">
-                </div>
-                <div class="flex gap-3">
-                    <button onclick="closeZoomModal()" class="flex-1 py-3.5 rounded-xl font-bold text-sm glass-card text-slate-800 dark:text-slate-300 hover:text-blue-600 transition border-none">Скасувати</button>
-                    <button onclick="saveZoomLink()" class="flex-1 py-3.5 rounded-xl font-bold text-sm bg-blue-600 text-white hover:bg-blue-700 transition shadow-float hover:-translate-y-0.5">Зберегти в хмару</button>
-                </div>
-            </div>
-        </div>
-    </div>
+            <!-- РАЗДЕЛ 1: Три канона -->
+            <section id="canons" class="tab-content active">
+                <h1 class="text-2xl sm:text-3xl mb-6 mt-4">Каноны ко Святому Причащению</h1>
 
-    <!-- Модалка підтвердження видалення -->
-    <div id="confirm-modal" class="fixed inset-0 z-[300] bg-slate-900/50 flex items-center justify-center p-4 mobile-bottom-sheet hidden backdrop-blur-sm transition-opacity opacity-0">
-        <div class="w-full max-w-sm liquid-glass p-6 sm:p-8 relative text-center" style="border-radius: 32px;">
-            <div class="w-16 h-16 bg-red-100 dark:bg-red-500/10 rounded-full flex items-center justify-center text-red-600 dark:text-red-400 mx-auto mb-4 border border-red-200 dark:border-red-500/20">
-                <i class="ph ph-warning-circle text-3xl"></i>
-            </div>
-            <h3 id="confirm-title" class="text-xl font-extrabold text-slate-900 dark:text-white mb-2">Підтвердження</h3>
-            <p id="confirm-text" class="text-sm font-bold text-slate-600 dark:text-slate-400 mb-6">Ви впевнені, що хочете видалити це?</p>
-            <div class="flex gap-3">
-                <button onclick="closeConfirmModal()" class="flex-1 py-3.5 rounded-xl font-bold text-sm glass-card text-slate-800 dark:text-slate-300 hover:text-slate-900 transition border-none">Скасувати</button>
-                <button id="confirm-btn-yes" class="flex-1 py-3.5 rounded-xl font-bold text-sm bg-red-600 text-white hover:bg-red-700 transition shadow-float hover:-translate-y-0.5">Видалити</button>
-            </div>
+                <p><span class="r">Молитвами святых отец наших, Господи Иисусе Христе, Боже наш, помилуй нас. Аминь.</span></p>
+                <p>Слава Тебе, Боже наш, слава Тебе.</p>
+                <p>Царю Небесный, Утешителю, Душе истины, Иже везде сый и вся исполняяй, Сокровище благих и жизни Подателю, прииди и вселися в ны, и очисти ны от всякия скверны, и спаси, Блаже, души наша.</p>
+                <p><span class="b">Святый Боже, Святый Крепкий, Святый Безсмертный, помилуй нас.</span> <span class="r">(Трижды)</span></p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу, и ныне и присно, и во веки веков. Аминь.</span></p>
+                <p>Пресвятая Троице, помилуй нас; Господи, очисти грехи наша; Владыко, прости беззакония наша; Святый, посети и исцели немощи наша, имене Твоего ради.</p>
+                <p><span class="b">Господи, помилуй.</span> <span class="r">(Трижды)</span></p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу, и ныне и присно, и во веки веков. Аминь.</span></p>
+                <p>Отче наш, Иже еси на Небесех! Да святится имя Твое, да прийдет Царствие Твое, да будет воля Твоя, яко на Небеси, и на земли. Хлеб наш насущный даждь нам днесь; и остави нам долги наша, якоже и мы оставляем должником нашим; и не введи нас во искушение, но избави нас от лукаваго.</p>
+                <p><span class="r">Господи, помилуй. (12 раз)</span></p>
+                <p>Приидите, поклонимся Цареви нашему Богу. <span class="r">(Поклон)</span></p>
+                <p>Приидите, поклонимся и припадем Христу, Цареви нашему Богу. <span class="r">(Поклон)</span></p>
+                <p>Приидите, поклонимся и припадем Самому Христу, Цареви и Богу нашему. <span class="r">(Поклон)</span></p>
+
+                <p class="text-center mt-6 mb-2"><span class="r">Глас 6-й</span></p>
+                <h2 class="text-xl font-bold mb-4">Песнь 1</h2>
+                <p><span class="b">Ирмос:</span> Яко по суху пешешествовав Израиль, по бездне стопами, гонителя фараона видя потопляема, Богу победную песнь пойм, вопияше.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Ныне приступих аз грешный и обремененный к Тебе, Владыце и Богу моему; не смею же взирати на небо, токмо молюся, глаголя: даждь ми, Господи, ум, да плачуся дел мойх горько.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>О, горе мне грешному! Паче всех человек окаянен есмь, покаяния несть во мне; даждь ми, Господи, слезы, да плачуся дел мойх горько.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Безумне окаянне человече, в лености время губиши; помысли житие твое, и обратися ко Господу Богу, и плачися о делех твоих горько.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p><span class="b">Богородичен:</span> Мати Божия Пречистая, воззри на мя грешнаго, и от сети диаволи избави мя, и на путь покаяния настави мя, да плачуся дел мойх горько.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Многими содержимь напастьми, к Тебе прибегаю, спасения иский: о Мати Слова и Дево, от тяжких и лютых мя спаси.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Страстей мя смущают прилози, многаго уныния исполнити мою душу; умири, Отроковице, тишиною Сына и Бога Твоего, Всенепорочная.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Спаса рождшую Тя и Бога, молю, Дево, избавитися ми лютых; к Тебе бо ныне прибегая, простираю и душу и помышление.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Недугующа телом и душею, посещения Божественнаго и промышления от Тебе сподоби, едина Богомати, яко благая, Благаго же Родительница.</p>
+                <p><span class="r">Припев:</span> <span class="b">Господи Иисусе Христе, Боже мой, помилуй мя.</span></p>
+                <p>Иисусу: Песнь воспети и восхвалити, Спасе, Твоего раба достойно сподоби, безплотному Ангелу, наставнику и хранителю моему.</p>
+                <p><span class="r">Припев:</span> <span class="b">Святый Ангеле Божий, хранителю мой, моли Бога о мне.</span></p>
+                <p>Един аз в неразумии и в лености ныне лежу, наставниче мой и хранителю, не остави мене погибающа.</p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу.</span></p>
+                <p>Ум мой твоею молитвою направи, творити ми Божия повеления, да получу от Бога отдание грехов, и ненавидети ми злых настави мя, молюся ти.</p>
+                <p><span class="b">И ныне и присно, и во веки веков. Аминь.</span></p>
+                <p>Молися, Девице, о мне, рабе Твоем, ко Благодателю, со хранителем мойм Ангелом, и настави мя творити заповеди Сына Твоего, и Творца моего.</p>
+
+                <h2 class="text-xl font-bold mt-8 mb-4">Песнь 3</h2>
+                <p><span class="b">Ирмос:</span> Несть свят, якоже Ты, Господи Боже мой, вознесый рог верных Твойх, Блаже, и утвердивый нас на камени исповедания Твоего.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Внегда поставлени будут престоли на Судищи Страшнем, тогда всех человек дела обличатся; горе тамо будет грешным, в муку отсылаемым; и то ведущи, душе моя, покайся от злых дел твойх.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Праведницы возрадуются, а грешнии восплачутся, тогда никтоже возможет помощи нам, но дела наша осудят нас; темже прежде конца покайся от злых дел твойх.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Увы мне великогрешному, иже делы и мысльми осквернився, ни капли слез имею от жестосердия; ныне возникни от земли, душе моя, и покайся от злых дел твойх.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p><span class="b">Богородичен:</span> Се, взывает, Госпоже, Сын Твой, и поучает нас на доброе, аз же грешный добра всегда бегаю; но Ты, Милостивая, помилуй мя, да покаюся от злых моих дел.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Предстательство и покров жизни моея полагаю Тя, Богородительнице Дево: Ты мя окорми ко пристанищу Твоему, благих виновна, верных Утверждение, едина Всепетая.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Молю, Дево, душевное смущение и печали моея бурю разорити: Ты бо, Богоневестная, Начальника тишины Христа родила еси, едина Пречистая.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Благодетеля рождши добрых виновнаго, благодеяния богатство всем источи: вся бо можеши, яко сильнаго в крепости Христа рождши, Богоблаженная.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Лютыми недуги и болезненными страстьми истязаему, Дево, Ты ми помози: исцелений бо неоскудное Тя знаю Сокровище, Пренепорочная, неиждиваемое.</p>
+                <p><span class="r">Припев:</span> <span class="b">Святый Ангеле Божий, хранителю мой, моли Бога о мне.</span></p>
+                <p>Все помышление мое и душу мою к тебе возложих, хранителю мой: ты от всякия мя напасти вражия избави.</p>
+                <p><span class="r">Припев:</span> <span class="b">Святый Ангеле Божий, хранителю мой, моли Бога о мне.</span></p>
+                <p>Враг попирает мя, и озлобляет, и поучает всегда творити своя хотения; но ты, наставниче мой, не остави мене погибающа.</p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу.</span></p>
+                <p>Пети песнь со благодарением и усердием Творцу и Богу даждь ми, и тебе, благому Ангелу хранителю моему: избавителю мой, изми мя от враг озлобляющих мя.</p>
+                <p><span class="b">И ныне и присно, и во веки веков. Аминь.</span></p>
+                <p>Исцели, Пречистая, моя многонедужныя струпы, яже в души, прожени враги, иже присно борются со мною.</p>
+
+                <p><span class="b">Кондак Пресвятой Богородице, глас 6-й:</span> Не имамы иныя помощи, не имамы иные надежды, разве Тебе, Пречистая Дево, Ты нам помози, на Тебе надеемся, и Тобою хвалимся, Твой бо есмы раби, да не постыдимся.</p>
+                <p><span class="b">Кондак Ангелу-Хранителю, глас 4-й:</span> Явися мне милосерд, святый Ангеле Господень, хранителю мой, и не отлучайся от мене сквернаго, но просвети мя светом неприкосновенным, и сотвори мя достойна Царствия Небеснаго.</p>
+                <p><span class="b">Икос Ангелу-Хранителю:</span> Уничиженную душу мою многими соблазны, ты, святый предстателю, неизреченныя славы Небесныя сподоби, и певец с лики безплотных Сил Божиих, помилуй мя и сохрани, и помыслы добрыми душу мою просвети, да твоею славою, Ангеле мой, обогащуся, и низложи зломыслящия мне враги, и сотвори мя достойна Царствия Небеснаго.</p>
+
+                <p><span class="b">Седален Господу Иисусу Христу, глас 6-й:</span> Помышляю день страшный, и плачуся деяний моих лукавых: како отвещаю Безсмертному Царю, или коим дерзновением воззрю на Судию, блудный аз? Благоутробный Отче, Сыне Единородный, и Душе Святый, помилуй мя.</p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу.</span></p>
+                <p><span class="b">Седален Ангелу-Хранителю, глас 2-й:</span> От любве душевныя вопию ти, хранителю моей души, всесвятый мой Ангеле: покрый мя и соблюди от лукаваго ловления всегда, и к жизни настави Небесней, вразумляя, и просвещая, и укрепляя мя.</p>
+                <p><span class="b">И ныне и присно, и во веки веков. Аминь.</span></p>
+                <p><span class="b">Богородичен:</span> Богородице безневестная Пречистая, Яже без семене рождши всех Владыку, Того со Ангелом хранителем мойм моли, избавити ми ся всякаго недоумения, и дати умиление и свет души моей, и согрешением очищение, Яже едина вскоре заступающи.</p>
+
+                <h2 class="text-xl font-bold mt-8 mb-4">Песнь 4</h2>
+                <p><span class="b">Ирмос:</span> Христос моя сила, Бог и Господь, честная Церковь боголепно поет, взывающи от смысла чиста, о Господе празднующи.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Широк путь зде и угодный сласти творити, но горько будет в последний день, егда душа от тела разлучатися будет: блюдися от сих, человече, Царствия ради Божия.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Почто убогаго обидиши, мзду наемничу удержуеши, брата твоего не любиши, блуд и гордость гониши? Остави убо сия, душе моя, и покайся Царствия ради Божия.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>О безумный человече, доколе углебаеши, яко пчела, собирающи богатство твое? Вскоре бо погибнет, яко прах и пепел; но более взыщи Царствия Божия.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p><span class="b">Богородичен:</span> Госпоже Богородице, помилуй мя грешнаго, и в добродетели укрепи, и соблюди мя, да наглая смерть не похитит мя неготоваго, и доведи мя, Дево, Царствия Божия.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Страстей моих смущение, Кормчию рождшая Господа, и бурю утиши моих прегрешений, Богоневестная.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Милосердия Твоего бездну призывающу подаждь ми, Яже Благосердаго рождшая, и Спаса всех поющих Тя.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Наслаждающеся, Пречистая, Твойх дарований, благодарственное воспеваем пение, ведуще Тя Богоматерь.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>На одре болезни моея и немощи низлежащу ми, яко Боголюбива, помози, Богородице, едина Приснодево.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Надежду и утверждение, и спасения стену недвижиму, имуще Тя, Всепетая, неудобства всякаго избавляемся.</p>
+                <p><span class="r">Припев:</span> <span class="b">Святый Ангеле Божий, хранителю мой, моли Бога о мне.</span></p>
+                <p>Моли Человеколюбца Бога ты, хранителю мой, и не остави мене, но присно в мире житие мое соблюди, и подаждь ми спасение необоримое.</p>
+                <p><span class="r">Припев:</span> <span class="b">Святый Ангеле Божий, хранителю мой, моли Бога о мне.</span></p>
+                <p>Яко заступника и хранителя животу моему прием тя от Бога, Ангеле, молю тя, святый: от всяких мя бед свободи.</p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу.</span></p>
+                <p>Мою скверность твоею святынею очисти, хранителю мой, и от части шуия да отлучен буду молитвами твойми, и причастник славы явлюся.</p>
+                <p><span class="b">И ныне и присно, и во веки веков. Аминь.</span></p>
+                <p>Недоумение предлежит ми от обышедших мя зол, Пречистая, но избави мя от них скоро: к Тебе бо единей прибегох.</p>
+
+                <h2 class="text-xl font-bold mt-8 mb-4">Песнь 5</h2>
+                <p><span class="b">Ирмос:</span> Божиим светом Твоим, Блаже, утренюющих Ти души любовию озари, молюся, Тя ведети, Слове Божий, истиннаго Бога, от мрака греховнаго взывающа.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Воспомяни, окаянный человече, како лжам, клеветам, разбою, немощем, лютым зверем, грехов ради порабощен еси; душе моя грешная, того ли восхотела еси?</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Трепещут ми уди, всеми бо сотворих вину: очима взираяй, ушима слышай, языком злая глаголяй, всего себе геенне предаяй; душе моя грешная, сего ли восхотела еси?</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Блудника и разбойника кающася приял еси, Спасе, аз же един леностию греховною отягчихся, и злым делом поработихся; душе моя грешная, сего ли восхотела еси?</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p><span class="b">Богородичен:</span> Дивная и скорая Помощнице всем человеком, Мати Божия, помози мне недостойному, душа бо моя грешная того восхоте.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Исполни, Чистая, веселия сердце мое, Твою нетленную дающи радость, веселия рождшая Виновнаго.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Избави нас от бед, Богородице Чистая, вечное рождши Избавление, и Мир, всяк ум преимущий.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Разреши мглу прегрешений мойх, Богоневесто, просвещением Твоея светлости, Свет рождшая Божественный и превечный.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Исцели, Чистая, души моей неможение, посещения Твоего сподобльшая, и здравие молитвами Твоими подаждь ми.</p>
+                <p><span class="r">Припев:</span> <span class="b">Святый Ангеле Божий, хранителю мой, моли Бога о мне.</span></p>
+                <p>Яко имея дерзновение к Богу, хранителю мой святый, Сего умоли от оскорбляющих мя зол избавити.</p>
+                <p><span class="r">Припев:</span> <span class="b">Святый Ангеле Божий, хранителю мой, моли Бога о мне.</span></p>
+                <p>Свете светлый, светло просвети душу мою, наставниче мой и хранителю, от Бога данный ми Ангеле.</p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу.</span></p>
+                <p>Спяща мя зле тяготою греховною яко бдяща сохрани, Ангеле Божий, и возстави мя на славословие молением твойм.</p>
+                <p><span class="b">И ныне и присно, и во веки веков. Аминь.</span></p>
+                <p>Марие, Госпоже Богородице безневестная, Надеждо верных, вражия возношения низложи, поющия же Тя возвесели.</p>
+
+                <h2 class="text-xl font-bold mt-8 mb-4">Песнь 6</h2>
+                <p><span class="b">Ирмос:</span> Житейское море воздвизаемое зря напастей бурею, к тихому пристанищу Твоему притек, вопию Ти: возведи от тли живот мой, Многомилостиве.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Житие на земли блудно пожих, и душу во тьму предах, ныне убо молю Тя, Милостивый Владыко: свободи мя от работы сея вражия, и даждь ми разум творити волю Твою.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Кто творит таковая, якоже аз? Якоже бо свиния лежит в калу, тако и аз греху служу. Но Ты, Господи, исторгни мя от гнуса сего, и даждь ми сердце творити заповеди Твоя.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Воспряни, окаянный человече, к Богу, воспомянув своя согрешения, припадая ко Творцу, слезя и стеня; Тойже яко милосерд, даст ти ум знати волю Свою.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p><span class="b">Богородичен:</span> Богородице Дево, от видимаго и невидимаго зла сохрани мя, Пречистая, и приими молитвы моя, и донеси я Сыну Твоему, да даст ми ум творити волю Его.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Смерти и тли яко спасл есть, Сам Ся издав смерти, тлением и смертию мое естество ято бывшее, Дево, моли Господа и Сына Твоего, врагов злодействия мя избавити.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Предстательницу Тя живота вем, и Хранительницу тверду, Дево, и напастей решащу молвы, и налоги бесов отгоняющу; и молюся всегда, от тли страстей моих избавити мя.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Яко стену прибежища стяжахом, и душ всесовершенное спасение, и пространство в скорбех, Отроковице, и просвещением Твоим присно радуемся: о Владычице, и ныне нас от страстей и бед спаси.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>На одре ныне немощствуяй лежу, и несть исцеления плоти моей; но Бога и Спаса миру, и Избавителя недугов рождшая, Тебе молюся Благой: от тли недуг возстави мя.</p>
+                <p><span class="r">Припев:</span> <span class="b">Святый Ангеле Божий, хранителю мой, моли Бога о мне.</span></p>
+                <p>Всяких мя напастей свободи, и от печалей спаси, молюся ти, святый Ангеле, данный ми от Бога, хранителю мой добрый.</p>
+                <p><span class="r">Припев:</span> <span class="b">Святый Ангеле Божий, хранителю мой, моли Бога о мне.</span></p>
+                <p>Освети ум мой, блаже, и просвети мя, молюся ти, святый Ангеле, и мыслити ми полезная всегда настави мя.</p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу.</span></p>
+                <p>Устави сердце мое от настоящаго мятежа, и бдети укрепи мя во благих, хранителю мой, и настави мя чудно к тишине животней.</p>
+                <p><span class="b">И ныне и присно, и во веки веков. Аминь.</span></p>
+                <p>Слово Божие в Тя вселися, Богородице, и человеком Тя показа небесную лествицу: Тобою бо к нам Вышний сошел есть.</p>
+
+                <p><span class="b">Кондак Господу Иисусу Христу, глас 6-й:</span> Душе моя, почто грехами богатееши, почто волю диаволю твориши, в чесом надежду полагаеши? Престани от сих, и обратися к Богу с плачем, зовущи: Милосерде Господи, помилуй мя грешнаго.</p>
+                <p><span class="b">Икос Господу Иисусу Христу:</span> Помысли, душе моя, горький час смерти и страшный суд Творца твоего и Бога: Ангели бо грознии поймут тя, душе, и в вечный огнь введут; убо прежде смерти покайся, вопиющи: Господи, помилуй мя грешнаго.</p>
+
+                <h2 class="text-xl font-bold mt-8 mb-4">Песнь 7</h2>
+                <p><span class="b">Ирмос:</span> Росодательну убо пещь содела Ангел преподобным отроком, халдеи же опаляющее веление Божие мучителя увеща вопити: благословен еси, Боже отец наших.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Не надейся, душе моя, на тленное богатство и на неправедное собрание, вся бо сия не веси кому оставиши, но возопий: помилуй мя, Христе Боже, недостойнаго.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Не уповай, душе моя, на телесное здравие и на скоромимоходящую красоту: видиши бо, яко сильнии и младии умирают; но возопий: помилуй мя, Христе Боже, недостойнаго.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Воспомяни, душе моя, вечное житие, Царство Небесное, уготованное святым, и тьму кромешнюю, и гнев Божий злым, и возопий: помилуй мя, Христе Боже, недостойнаго.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p><span class="b">Богородичен:</span> Припади, душе моя, к Божией Матери, и помолися Той: есть бо скорая Помощница кающимся, умолит Сына Христа Бога, и помилует мя недостойнаго.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Наше спасение якоже восхотел еси, Спасе, устроити, во утробу Девыя вселился еси, Юже миру Предстательницу показал еси: отец наших Боже, благословен еси.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Волителя милости, Егоже родила еси, Мати Чистая, умоли избавитися от прегрешений и душевных скверн верою зовущим: отец наших Боже, благословен еси.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Сокровище спасения и источник нетления, Тя рождшую, и столп утверждения, и дверь покаяния, зовущим показал еси: отец наших Боже, благословен еси.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Телесныя слабости и душевныя недуги, Богородительнице, любовию приступающих к крову Твоему, Дево, исцелити сподоби, Спаса Христа нам рождшая.</p>
+                <p><span class="r">Припев:</span> <span class="b">Святый Ангеле Божий, хранителю мой, моли Бога о мне.</span></p>
+                <p>Милостив буди ми и умоли Бога, Господень Ангеле: имею бо тя заступника во всем животе моем, наставника же и хранителя, от Бога дарованнаго ми во веки.</p>
+                <p><span class="r">Припев:</span> <span class="b">Святый Ангеле Божий, хранителю мой, моли Бога о мне.</span></p>
+                <p>Не остави в путь шествующия души моея окаянныя убити разбойником, святый Ангеле, яже ти от Бога предана бысть непорочне, но настави ю на путь покаяния.</p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу.</span></p>
+                <p>Всю посрамлену душу мою привожду от лукавых ми помысл и дел; но предвари, наставниче мой, и исцеление ми подаждь благих помысл, уклоняти ми ся всегда на правыя стези.</p>
+                <p><span class="b">И ныне и присно, и во веки веков. Аминь.</span></p>
+                <p>Премудрости исполни всех и крепости Божественныя, Ипостасная Премудросте Вышняго, Богородицы ради, верою вопиющих: отец наших Боже, благословен еси.</p>
+
+                <h2 class="text-xl font-bold mt-8 mb-4">Песнь 8</h2>
+                <p><span class="b">Ирмос:</span> Из пламене преподобным росу источил еси, и праведнаго жертву водою попалил еси: вся бо твориши, Христе, токмо еже хотети. Тя превозносим во вся веки.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Како не имам плакатися, егда помышляю смерть? Видех бо во гробе лежаща брата моего, безславна и безобразна. Что убо чаю, и на что надеюся? Токмо даждь ми, Господи, прежде конца покаяние. <span class="r">(Дважды)</span></p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Верую, яко прийдеши судити живых и мертвых, и вси во своем чину станут, старии и младии, владыки и князи, девы и священницы; где обрящуся аз? Сего ради вопию: даждь ми, Господи, прежде конца покаяние.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p><span class="b">Богородичен:</span> Пречистая Богородице, приими недостойную молитву мою, и сохрани мя от наглыя смерти, и даруй ми прежде конца покаяние.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Помощи яже от Тебе требующия не презри, Дево, поющия и превозносящия Тя во веки.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Неможение души моей исцеляеши, и телесныя болезни, Дево, да Тя прославлю, Чистая, во веки.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Исцелений богатство изливаеши верно поющим Тя, Дево, и превозносящим неизреченное Твое Рождество.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Напастей Ты прилоги отгоняеши, и страстей находы, Дево: темже Тя поем во вся веки.</p>
+                <p><span class="r">Припев:</span> <span class="b">Святый Ангеле Божий, хранителю мой, моли Бога о мне.</span></p>
+                <p>От Бога посланный, утверди живот мой, раба твоего, преблагий Ангеле, и не остави мене во веки.</p>
+                <p><span class="r">Припев:</span> <span class="b">Святый Ангеле Божий, хранителю мой, моли Бога о мне.</span></p>
+                <p>Ангела тя суща блага, души моея наставника и хранителя, преблаженне, воспеваю во веки.</p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу.</span></p>
+                <p>Буди ми покров и забрало в день испытания всех человек, воньже огнем искушаются дела благая же и злая.</p>
+                <p><span class="b">И ныне и присно, и во веки веков. Аминь.</span></p>
+                <p>Буди ми помощница и тишина, Богородице Приснодево, рабу Твоему, и не остави мене лишена быти Твоего владычества.</p>
+
+                <h2 class="text-xl font-bold mt-8 mb-4">Песнь 9</h2>
+                <p><span class="b">Ирмос:</span> Бога человеком невозможно видети, на Негоже не смеют чини Ангельстии взирати; Тобою же, Всечистая, явися человеком Слово воплощенно; Егоже величающе, с Небесными вои Тя ублажаем.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Ныне к вам прибегаю, Ангели, Архангели, и вся Небесныя Силы, у Престола Божия стоящии, молитеся ко Творцу своему, да избавит душу мою от муки вечныя.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Ныне плачуся к вам, святии патриарси, царие и пророцы, апостоли и святители, и вси избраннии Христовы: помозите ми на Суде, да спасет душу мою от силы вражия.</p>
+                <p><span class="r">Припев:</span> <span class="b">Помилуй мя, Боже, помилуй мя.</span></p>
+                <p>Ныне к вам воздежу руце, святии мученицы, пустынницы, девственницы, праведницы, и вси святии, молящиися ко Господу за весь мир, да помилует мя в час смерти моея.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p><span class="b">Богородичен:</span> Мати Божия, помози ми, на Тя сильне надеющемуся, умоли Сына Своего, да поставит мя недостойнаго одесную Себе, егда сядет судяй живых и мертвых. Аминь.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Тока слез моих не отвратися, Яже от всякаго лица всяку слезу отъемшаго, Дево, Христа рождшая.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Радости мое сердце исполни, Дево, Яже радости приемшая исполнение, греховную печаль потребляющи.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Пристанище и предстательство к Тебе прибегающих буди, Дево, и стена нерушимая, прибежище же и покров и веселие.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>Света Твоего зарями просвети, Дево, мрак неведения отгоняющи, благоверно Богородицу Тя исповедающих.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p>На месте озлобления немощи, смирившагося, Дево, исцели, из нездравия во здравие претворяющи.</p>
+                <p><span class="r">Припев:</span> <span class="b">Господи Иисусе Христе, Боже мой, помилуй мя.</span></p>
+                <p>Иисусу: Помилуй мя, едине Спасе мой, яко милостив еси и милосерд, и праведных ликов сотвори мя причастника.</p>
+                <p><span class="r">Припев:</span> <span class="b">Святый Ангеле Божий, хранителю мой, моли Бога о мне.</span></p>
+                <p>Мыслити ми присно и творити, Господень Ангеле, благая и полезная даруй, яко сильна яви в немощи и непорочна.</p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу.</span></p>
+                <p>Яко имея дерзновение к Царю Небесному, Того моли, с прочими безплотными, помиловати мя окаяннаго.</p>
+                <p><span class="b">И ныне и присно, и во веки веков. Аминь.</span></p>
+                <p>Много дерзновение имущи, Дево, к Воплощшемуся из Тебе, преложи мя от уз, и разрешение ми подаждь и спасение, молитвами Твоими.</p>
+
+                <p class="text-center mt-6 mb-2"><span class="r">Господи Иисусе Христе, Сыне Божий, помилуй мя грешнаго.</span></p>
+                <h3 class="text-lg font-bold mt-4 mb-2">Молитва ко Господу</h3>
+                <p>Владыко Христе Боже, Иже Страстьми Своими страсти моя исцеливый, и язвами Своими язвы моя уврачевавый, даруй мне, много Тебе прегрешившему, слезы умиления; сраствори моему телу от обоняния Животворящаго Тела Твоего, и наслади душу мою Твоею Честною Кровию, от горести, еюже мя сопротивник напой; возвыси мой ум к Тебе, долу поникший, и возведи от пропасти погибели, яко не имам покаяния, не имам умиления, не имам слезы утешительныя, возводящия чада ко своему наследию. Омрачихся умом в житейских страстех, не могу воззрети к Тебе в болезни, не могу согретися слезами яже к Тебе любве. Но, Владыко Господи Иисусе Христе, Сокровище благих, даруй мне покаяние всецелое и сердце люботрудное во взыскание Твое, даруй мне благодать Твою, и обнови во мне зраки Твоего образа. Оставих Тя, не остави мене; изыди на взыскание мое, возведи к пажити Твоей, и сопричти мя овцам избраннаго Твоего стада, воспитай мя с ними от злака Божественных Твойх Таинств, молитвами Пречистыя Твоея Матере, и всех святых Твойх. Аминь.</p>
+
+                <p class="text-center mt-6 mb-2"><span class="r">Пресвятая Богородице, спаси нас.</span></p>
+                <h3 class="text-lg font-bold mt-4 mb-2">Молитвы ко Пресвятой Богородице</h3>
+                <p>Царице моя преблагая, Надеждо моя Богородице, Приятелище сирых, и странных Предстательнице, скорбящих Радосте, обидимых Покровительнице! Зриши мою беду, зриши мою скорбь, помози ми яко немощну, окорми мя яко странна. Обиду мою веси, разреши ту, яко волиши: яко не имам иныя помощи разве Тебе, ни иныя Предстательницы, ни благия Утешительницы, токмо Тебе, о Богомати; яко да сохраниши мя и покрыеши во веки веков. Аминь.</p>
+                <p>К кому возопию, Владычице? К кому прибегну в горести моей, аще не к Тебе, Царице Небесная? Кто плач мой и воздыхание мое приймет, аще не Ты, Пренепорочная, Надеждо христиан и Прибежище нам грешным? Кто паче Тебе в напастех защитит? Услыши убо стенание мое, и приклони ухо Твое ко мне, Владычице Мати Бога моего, и не презри мене, требующаго Твоея помощи, и не отрини мене грешнаго. Вразуми и научи мя, Царице Небесная; не отступи от мене, раба Твоего, Владычице, за роптание мое, но буди мне Мати и Заступница. Вручаю себе милостивому покрову Твоему: приведи мя грешнаго к тихой и безмятежней жизни, да плачуся о гресех моих. К кому бо прибегну повинный аз, аще не к Тебе, упованию и прибежищу грешных, надеждою на неизреченную милость Твою и щедроты Твоя окриляемь? О Владычице Царице Небесная! Ты мне упование и прибежище, покров и заступление и помощь. Царице моя преблагая и скорая Заступнице! Покрый Твоим ходатайством моя прегрешения, защити мене от враг видимых и невидимых, умягчи сердца злых человек, возстающих на мя. О Мати Господа моего Творца! Ты еси корень девства и неувядаемый цвет чистоты. О Богородительнице! Ты подаждь ми помощь немощствующему плотскими страстьми и болезнующему сердцем: едино бо Твое и с Тобою Твоего сына и Бога нашего имам заступление, и Твоим пречудным заступлением да избавлюся от всякия беды и напасти, о пренепорочная и преславная Божия Мати Марие. Темже со упованием глаголю и вопию: радуйся, Благодатная, радуйся, Обрадованная, радуйся, Преблагословенная, Господь с Тобою.</p>
+
+                <p class="text-center mt-6 mb-2"><span class="r">Святый Ангеле Божий, хранителю мой, моли Бога о мне.</span></p>
+                <h3 class="text-lg font-bold mt-4 mb-2">Молитва Ангелу хранителю</h3>
+                <p>Ангеле Христов святый, к тебе припадая молюся, хранителю мой святый, приданный мне на соблюдение души и телу моему грешному от святаго крещения. Аз же своею леностию и своим злым обычаем прогневах твою пречистую светлость, и отгнах тя от себе всеми студными делы: лжами, клеветами, завистию, осуждением, презорством, непокорством, братоненавидением и злопомнением, сребролюбием, прелюбодеянием, яростию, скупостию, объядением без сытости и опивством, многоглаголанием, злыми помыслы и лукавыми, гордым обычаем и блудным возбешением, имый самохотение на всякое плотское вожделение. О злое мое произволение, егоже и скоти безсловеснии не творят! Да како возможеши воззрети на мя, или приступити ко мне, аки псу смердящему? Которыма очима, Ангеле Христов, воззриши на мя, оплетшася зле во гнусных делех? Да како уже возмогу отпущения просити горьким и злым моим и лукавым деянием, в няже впадаю по вся дни и нощи, и на всяк час? Но молюся ти припадая, хранителю мой святый, умилосердися на мя грешнаго и недостойнаго раба твоего, буди ми помощник и заступник на злаго моего сопротивника, святыми твоими молитвами, и Царствия Божия причастника мя сотвори, со всеми святыми, всегда, и ныне и присно, и во веки веков. Аминь.</p>
+
+                <h3 class="text-lg font-bold mt-8 mb-4">Окончание</h3>
+                <p>Достойно есть яко войстинну блажити Тя Богородицу, Присноблаженную, и Пренепорочную, и Матерь Бога нашего. Честнейшую Херувим, и славнейшую без сравнения Серафим, без истления Бога Слова рождшую, сущую Богородицу Тя величаем. <span class="r">(4)</span></p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу, и ныне и присно, и во веки веков. Аминь.</span></p>
+                <p><span class="b">Господи, помилуй.</span> <span class="r">(Трижды)</span></p>
+                <p>Господи Иисусе Христе, Сыне Божий, молитв ради Пречистыя Твоея Матере, преподобных и богоносных отец наших, и всех святых, помилуй нас. Аминь.</p>
+            </section>
+
+            <!-- РАЗДЕЛ 2: Последование -->
+            <section id="posledovanie" class="tab-content">
+                <h1 class="text-2xl sm:text-3xl mb-6 mt-4">Последование ко Святому Причащению</h1>
+                
+                <p><span class="r">Молитвами святых отец наших, Господи Иисусе Христе Боже наш, помилуй нас. Аминь.</span></p>
+                <p>Царю Небесный, Утешителю, Душе истины, Иже везде сый и вся исполняяй, Сокровище благих и жизни Подателю, прииди и вселися в ны, и очисти ны от всякия скверны, и спаси, Блаже, души наша.</p>
+                <p><span class="b">Святый Боже, Святый Крепкий, Святый Безсмертный, помилуй нас.</span> <span class="r">(Трижды)</span></p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу, и ныне и присно и во веки веков. Аминь.</span></p>
+                <p>Пресвятая Троице, помилуй нас; Господи, очисти грехи наша; Владыко, прости беззакония наша; Святый, посети и исцели немощи наша, имене Твоего ради.</p>
+                <p><span class="b">Господи, помилуй.</span> <span class="r">(Трижды)</span></p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу, и ныне и присно и во веки веков. Аминь.</span></p>
+                <p>Отче наш, Иже еси на небесех! Да святится имя Твое, да приидет Царствие Твое, да будет воля Твоя, яко на небеси и на земли. Хлеб наш насущный даждь нам днесь; и остави нам долги наша, якоже и мы оставляем должником нашим; и не введи нас во искушение, но избави нас от лукаваго.</p>
+                <p><span class="r">Господи, помилуй. (12 раз)</span></p>
+                <p>Приидите, поклонимся Цареви нашему Богу. <span class="r">(Поклон)</span></p>
+                <p>Приидите, поклонимся и припадем Христу, Цареви нашему Богу. <span class="r">(Поклон)</span></p>
+                <p>Приидите, поклонимся и припадем Самому Христу, Цареви и Богу нашему. <span class="r">(Поклон)</span></p>
+
+                <h3 class="text-lg font-bold mt-6 mb-2">Псалом 22</h3>
+                <p>Господь пасет мя, и ничтоже мя лишит. На месте злачне, тамо всели мя, на воде покойне воспита мя. Душу мою обрати, настави мя на стези правды, имене ради Своего. Аще бо и пойду посреде сени смертныя, не убоюся зла, яко Ты со мною еси, жезл Твой и палица Твоя, та мя утешиста. Уготовал еси предо мною трапезу сопротив стужающим мне, умастил еси елеом главу мою, и чаша Твоя упоявающи мя, яко державна. И милость Твоя поженет мя вся дни живота моего, и еже вселити ми ся в дом Господень, в долготу дний.</p>
+
+                <h3 class="text-lg font-bold mt-6 mb-2">Псалом 23</h3>
+                <p>Господня земля, и исполнение ея, вселенная, и вси живущии на ней. Той на морях основал ю есть, и на реках уготовал ю есть. Кто взыдет на гору Господню? Или кто станет на месте святем Его? Неповинен рукама и чист сердцем, иже не прият всуе душу свою, и не клятся лестию искреннему своему. Сей приимет благословение от Господа, и милостыню от Бога, Спаса своего. Сей род ищущих Господа, ищущих лице Бога Иаковля. Возмите врата князи ваша, и возмитеся врата вечная; и внидет Царь Славы. Кто есть сей Царь Славы? Господь крепок и силен, Господь силен в брани. Возмите врата князи ваша, и возмитеся врата вечная, и внидет Царь Славы. Кто есть сей Царь Славы? Господь сил, Той есть Царь Славы.</p>
+
+                <h3 class="text-lg font-bold mt-6 mb-2">Псалом 115</h3>
+                <p>Веровах, темже возглаголах, аз же смирихся зело. Аз же рех во изступлении моем: всяк человек лож. Что воздам Господеви о всех, яже воздаде ми? Чашу спасения прииму, и имя Господне призову, молитвы моя Господеви воздам пред всеми людьми Его. Честна пред Господем смерть преподобных Его. О, Господи, аз раб Твой, аз раб Твой и сын рабыни Твоея; растерзал еси узы моя. Тебе пожру жертву хвалы, и во имя Господне призову. Молитвы моя Господеви воздам пред всеми людьми Его, во дворех дому Господня, посреде тебе, Иерусалиме.</p>
+
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу, и ныне и присно, и во веки веков. Аминь.</span></p>
+                <p>Аллилуиа, аллилуиа, аллилуиа, слава Тебе, Боже. <span class="r">(С тремя поклонами)</span></p>
+
+                <h3 class="text-lg font-bold mt-6 mb-2">Тропари, глас 8-й</h3>
+                <p>Беззакония моя презри, Господи, от Девы рождейся, и сердце мое очисти, храм то творя пречистому Твоему Телу и Крови, ниже отрини мене от Твоего лица, без числа имеяй велию милость.</p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу.</span> Во причастие святынь Твоих како дерзну [вниду], недостойный? Аще бо дерзну к Тебе приступити с достойными, хитон мя обличает, яко несть вечерний, и осуждение исходатайствую многогрешной души моей. Очисти, Господи, скверну души моея, и спаси мя, яко Человеколюбец.</p>
+                <p><span class="b">И ныне, и присно, и во веки веков, аминь.</span> Многая множества моих, Богородице, прегрешений, к Тебе прибегох, Чистая, спасения требуя: посети немощствующую мою душу, и моли Сына Твоего и Бога нашего, дати ми оставление, яже содеях лютых, Едина благословенная.</p>
+                
+                <p class="mt-4"><span class="r">Во Святую же Четыредесятницу:</span></p>
+                <p>Егда славнии ученицы на умовении вечери просвещахуся, тогда Иуда злочестивый сребролюбием недуговав омрачашеся, и беззаконным судиям Тебе праведнаго Судию предает. Виждь, имений рачителю, сих ради удавление употребивша: бежи несытыя души, Учителю таковая дерзнувшия. Иже о всех благий Господи, слава Тебе.</p>
+
+                <h3 class="text-lg font-bold mt-6 mb-2">Псалом 50</h3>
+                <p>Помилуй мя, Боже, по велицей милости Твоей, и по множеству щедрот Твоих очисти беззаконие мое. Наипаче омый мя от беззакония моего, и от греха моего очисти мя; яко беззаконие мое аз знаю, и грех мой предо мною есть выну. Тебе единому согреших и лукавое пред Тобою сотворих; яко да оправдишися во словесех Твоих, и победиши внегда судити Ти. Се бо, в беззакониих зачат есмь, и во гресех роди мя мати моя. Се бо, истину возлюбил еси; безвестная и тайная премудрости Твоея явил ми еси. Окропиши мя иссопом, и очищуся; омыеши мя, и паче снега убелюся. Слуху моему даси радость и веселие; возрадуются кости смиренныя. Отврати лице Твое от грех моих и вся беззакония моя очисти. Сердце чисто созижди во мне, Боже, и дух прав обнови во утробе моей. Не отвержи мене от лица Твоего и Духа Твоего Святаго не отыми от мене. Воздаждь ми радость спасения Твоего и Духом Владычним утверди мя. Научу беззаконныя путем Твоим, и нечестивии к Тебе обратятся. Избави мя от кровей, Боже, Боже спасения моего; возрадуется язык мой правде Твоей. Господи, устне мои отверзеши, и уста моя возвестят хвалу Твою. Яко аще бы восхотел еси жертвы, дал бых убо: всесожжения не благоволиши. Жертва Богу дух сокрушен; сердце сокрушенно и смиренно Бог не уничижит. Ублажи, Господи, благоволением Твоим Сиона, и да созиждутся стены Иерусалимския. Тогда благоволиши жертву правды, возношение и всесожегаемая; тогда возложат на олтарь Твой тельцы.</p>
+
+                <h3 class="text-lg font-bold mt-6 mb-2">Канон, глас 2-й</h3>
+                <h2 class="text-xl font-bold mt-4 mb-2">Песнь 1</h2>
+                <p><span class="b">Ирмос:</span> Грядите людие, поим песнь Христу Богу, раздельшему море, и наставльшему люди, яже изведе из работы египетския, яко прославися.</p>
+                <p><span class="r">Припев:</span> <span class="b">Сердце чисто созижди во мне, Боже, и дух прав обнови во утробе моей.</span></p>
+                <p>Хлеб живота вечнующаго да будет ми Тело Твое Святое, благоутробне Господи, и Честная Кровь, и недуг многообразных исцеление.</p>
+                <p><span class="r">Припев:</span> <span class="b">Не отвержи мене от лица Твоего, и Духа Твоего Святаго не отыми от мене.</span></p>
+                <p>Осквернен делы безместными окаянный, Твоего Пречистаго Тела и Божественныя Крове недостоин есмь, Христе, причащения, егоже мя сподоби.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p><span class="b">Богородичен:</span> Земле благая, благословенная Богоневесто, клас прозябшая неоранный и спасительный миру, сподоби мя сей ядуща спастися.</p>
+
+                <h2 class="text-xl font-bold mt-4 mb-2">Песнь 3</h2>
+                <p><span class="b">Ирмос:</span> На камени мя веры утвердив, разширил еси уста моя на враги моя. Возвесели бо ся дух мой, внегда пети: несть свят, якоже Бог наш, и несть праведен, паче Тебе, Господи.</p>
+                <p><span class="r">Припев:</span> <span class="b">Сердце чисто созижди во мне, Боже, и дух прав обнови во утробе моей.</span></p>
+                <p>Слезныя ми подаждь, Христе, капли, скверну сердца моего очищающия: яко да благою совестию очищен, верою прихожду и страхом, Владыко, ко причащению Божественных Даров Твоих.</p>
+                <p><span class="r">Припев:</span> <span class="b">Не отвержи мене от лица Твоего, и Духа Твоего Святаго не отыми от мене.</span></p>
+                <p>Во оставление да будет ми прегрешений Пречистое Тело Твое, и Божественная Кровь, Духа же Святаго общение, и в жизнь вечную, Человеколюбче, и страстей и скорбей отчуждение.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p><span class="b">Богородичен:</span> Хлеба животнаго Tрапеза Пресвятая, свыше милости ради сшедшаго, и мирови новый живот дающаго, и мене ныне сподоби недостойнаго, со страхом вкусити сего, и живу быти.</p>
+
+                <h2 class="text-xl font-bold mt-4 mb-2">Песнь 4</h2>
+                <p><span class="b">Ирмос:</span> Пришел еси от Девы, не ходатай, ни Ангел, но Сам, Господи, воплощься, и спасл еси всего мя человека. Тем зову Ти: слава силе Твоей, Господи.</p>
+                <p><span class="r">Припев:</span> <span class="b">Сердце чисто созижди во мне, Боже, и дух прав обнови во утробе моей.</span></p>
+                <p>Восхотел еси, нас ради воплощся, Многомилостиве, заклан быти яко овча, грех ради человеческих: темже молю Тя, и моя очисти согрешения.</p>
+                <p><span class="r">Припев:</span> <span class="b">Не отвержи мене от лица Твоего, и Духа Твоего Святаго не отыми от мене.</span></p>
+                <p>Исцели души моея язвы, Господи, и всего освяти: и сподоби, Владыко, яко да причащуся тайныя Твоея Божественныя вечери, окаянный.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p><span class="b">Богородичен:</span> Умилостиви и мне Сущаго от утробы Твоея, Владычице, и соблюди мя нескверна раба Твоего и непорочна, яко да прием умнаго бисера, освящуся.</p>
+
+                <h2 class="text-xl font-bold mt-4 mb-2">Песнь 5</h2>
+                <p><span class="b">Ирмос:</span> Света Подателю и веков Творче, Господи, во свете Твоих повелений настави нас; разве бо Тебе иного бога не знаем.</p>
+                <p><span class="r">Припев:</span> <span class="b">Сердце чисто созижди во мне, Боже, и дух прав обнови во утробе моей.</span></p>
+                <p>Якоже предрекл еси, Христе, да будет убо худому рабу Твоему, и во мне пребуди, якоже обещался еси: се бо Тело Твое ям Божественное, и пию Кровь Твою.</p>
+                <p><span class="r">Припев:</span> <span class="b">Не отвержи мене от лица Твоего, и Духа Твоего Святаго не отыми от мене.</span></p>
+                <p>Слове Божий и Боже, угль Тела Твоего да будет мне помраченному в просвещение, и очищение оскверненной души моей Кровь Твою.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p><span class="b">Богородичен:</span> Марие, Мати Божия, благоухания честное селение, Твоими молитвами сосуд мя избранный соделай, яко да освящений причащуся Сына Твоего.</p>
+
+                <h2 class="text-xl font-bold mt-4 mb-2">Песнь 6</h2>
+                <p><span class="b">Ирмос:</span> В бездне греховней валяяся, неизследную милосердия Твоего призываю бездну: от тли, Боже, мя возведи.</p>
+                <p><span class="r">Припев:</span> <span class="b">Сердце чисто созижди во мне, Боже, и дух прав обнови во утробе моей.</span></p>
+                <p>Ум, душу и сердце освяти, Спасе, и тело мое, и сподоби неосужденно, Владыко, к страшным Тайнам приступити.</p>
+                <p><span class="r">Припев:</span> <span class="b">Не отвержи мене от лица Твоего, и Духа Твоего Святаго не отыми от мене.</span></p>
+                <p>Да бых устранился от страстей, и Твоея благодати имел бы приложение, живота же утверждение, причащением Святых, Христе, Таин Твоих.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p><span class="b">Богородичен:</span> Божие, Боже, Слово Святое, всего мя освяти, ныне приходящаго к Божественным Твоим Тайнам, Святыя Матере Твоея мольбами.</p>
+
+                <p><span class="b">Господи, помилуй.</span> <span class="r">(Трижды)</span></p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу, и ныне и присно и во веки веков. Аминь.</span></p>
+                <p><span class="b">Кондак, глас 2-й:</span> Хлеб, Христе, взяти не презри мя, Тело Твое, и Божественную Твою ныне Кровь, пречистых, Владыко, и страшных Твоих Таин причаститися окаяннаго, да не будет ми в суд, да будет же ми в живот вечный и безсмертный.</p>
+
+                <h2 class="text-xl font-bold mt-4 mb-2">Песнь 7</h2>
+                <p><span class="b">Ирмос:</span> Телу златому премудрыя дети не послужиша, и в пламень сами поидоша, и боги их обругаша, среди пламене возопиша, и ороси я Ангел: услышася уже уст ваших молитва.</p>
+                <p><span class="r">Припев:</span> <span class="b">Сердце чисто созижди во мне, Боже, и дух прав обнови во утробе моей.</span></p>
+                <p>Источник благих, причащение, Христе, безсмертных Твоих ныне Таинств да будет ми свет, и живот, и безстрастие, и к преспеянию же и умножению добродетели Божественнейшия ходатайственно, едине Блаже, яко да славлю Тя.</p>
+                <p><span class="r">Припев:</span> <span class="b">Не отвержи мене от лица Твоего, и Духа Твоего Святаго не отыми от мене.</span></p>
+                <p>Да избавлюся от страстей, и врагов, и нужды, и всякия скорби, трепетом и любовию со благоговением, Человеколюбче, приступаяй ныне к Твоим безсмертным и Божественным Тайнам, и пети Тебе сподоби: благословен еси, Господи, Боже отец наших.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p><span class="b">Богородичен:</span> Спаса Христа рождшая паче ума, Богоблагодатная, молю Тя ныне, раб Твой, Чистую нечистый: хотящаго мя ныне к пречистым Тайнам приступити, очисти всего от скверны плоти и духа.</p>
+
+                <h2 class="text-xl font-bold mt-4 mb-2">Песнь 8</h2>
+                <p><span class="b">Ирмос:</span> В пещь огненную ко отроком еврейским снизшедшаго, и пламень в росу преложшаго Бога, пойте дела яко Господа, и превозносите во вся веки.</p>
+                <p><span class="r">Припев:</span> <span class="b">Сердце чисто созижди во мне, Боже, и дух прав обнови во утробе моей.</span></p>
+                <p>Небесных, и страшных, и святых Твоих, Христе, ныне Таин, и Божественныя Твоея и тайныя вечери общника быти и мене сподоби отчаяннаго, Боже, Спасе мой.</p>
+                <p><span class="r">Припев:</span> <span class="b">Не отвержи мене от лица Твоего, и Духа Твоего Святаго не отыми от мене.</span></p>
+                <p>Под Твое прибег благоутробие, Блаже, со страхом зову Ти: во мне пребуди, Спасе, и аз, якоже рекл еси, в Тебе; се бо дерзая на милость Твою, ям Тело Твое, и пию Кровь Твою.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Троице, Боже наш, слава Тебе.</span></p>
+                <p>Трепещу, приемля огнь, да не опалюся яко воск и яко трава; оле страшнаго таинства! оле благоутробия Божия! Како Божественнаго Тела и Крове брение причащаюся, и нетленен сотворяюся?</p>
+
+                <h2 class="text-xl font-bold mt-4 mb-2">Песнь 9</h2>
+                <p><span class="b">Ирмос:</span> Безначальна Родителя Сын, Бог и Господь, воплощся от Девы нам явися, омраченная просветити, собрати расточенная: тем всепетую Богородицу величаем.</p>
+                <p><span class="r">Припев:</span> <span class="b">Сердце чисто созижди во мне, Боже, и дух прав обнови во утробе моей.</span></p>
+                <p>Христос есть, вкусите и видите: Господь нас ради, по нам бо древле бывый, единою Себе принес, яко приношение Отцу Своему, присно закалается, освящаяй причащающияся.</p>
+                <p><span class="r">Припев:</span> <span class="b">Не отвержи мене от лица Твоего, и Духа Твоего Святаго не отыми от мене.</span></p>
+                <p>Душею и телом да освящуся, Владыко, да просвещуся, да спасуся, да буду дом Твой причащением священных Таин, живущаго Тя имея в себе со Отцем и Духом, Благодетелю Многомилостиве.</p>
+                <p><span class="r">Припев:</span> <span class="b">Воздаждь ми радость спасения Твоего и Духом Владычним утверди мя.</span></p>
+                <p>Якоже огнь да будет ми, и яко свет, Тело Твое и Кровь, Спасе мой, пречестная, опаляя греховное вещество, сжигая же страстей терние, и всего мя просвещая, покланятися Божеству Твоему.</p>
+                <p><span class="r">Припев:</span> <span class="b">Пресвятая Богородице, спаси нас.</span></p>
+                <p><span class="b">Богородичен:</span> Бог воплотися от чистых кровей Твоих; темже всякий род поет Тя, Владычице, умная же множества славят, яко Тобою яве узреша всеми Владычествующаго, осуществовавшагося человечеством.</p>
+
+                <p><span class="b">Достойно есть яко воистинну блажити Тя, Богородицу, Присноблаженную и Пренепорочную и Матерь Бога нашего. Честнейшую Херувим и славнейшую без сравнения Серафим, без истления Бога Слова рождшую, сущую Богородицу Тя величаем.</span></p>
+                <p><span class="b">Святый Боже, Святый Крепкий, Святый Безсмертный, помилуй нас.</span> <span class="r">(Tрижды)</span></p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу, и ныне и присно и во веки веков. Аминь.</span></p>
+                <p>Пресвятая Троице, помилуй нас; Господи, очисти грехи наша; Владыко, прости беззакония наша; Святый, посети и исцели немощи наша, имене Твоего ради.</p>
+                <p><span class="b">Господи, помилуй.</span> <span class="r">(Трижды)</span></p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу, и ныне и присно и во веки веков. Аминь.</span></p>
+                <p>Отче наш, Иже еси на небесех! Да святится имя Твое, да приидет Царствие Твое, да будет воля Твоя, яко на небеси и на земли. Хлеб наш насущный даждь нам днесь; и остави нам долги наша, якоже и мы оставляем должником нашим; и не введи нас во искушение, но избави нас от лукаваго.</p>
+
+                <h3 class="text-lg font-bold mt-6 mb-2">Тропари покаянные</h3>
+                <p>Помилуй нас, Господи, помилуй нас; всякаго бо ответа недоумеюще, сию Ти молитву, яко Владыце, грешнии приносим: помилуй нас.</p>
+                <p><span class="b">Слава Отцу, и Сыну, и Святому Духу.</span> Господи, помилуй нас, на Тя бо уповахом; не прогневайся на ны зело, ниже помяни беззаконий наших, но призри и ныне яко благоутробен, и избави ны от враг наших. Ты бо еси Бог наш, и мы людие Твои, вси дела руку Твоею, и имя Твое призываем.</p>
+                <p><span class="b">И ныне, и присно, и во веки веков, аминь.</span> Милосердия двери отверзи нам, благословенная Богородице, надеющиися на Тя да не погибнем, но да избавимся Тобою от бед: Ты бо еси спасение рода христианскаго.</p>
+                <p><span class="b">Господи, помилуй.</span> <span class="r">(40 раз) И поклоны, сколько хочешь.</span></p>
+
+                <p class="mt-4"><span class="r">И стихи:</span></p>
+                <p>Хотя ясти, человече, Тело Владычне,<br>
+                Страхом приступи, да не опалишися: огнь бо есть.<br>
+                Божественную же пия Кровь ко общению,<br>
+                Первее примирися тя опечалившим.<br>
+                Таже дерзая, таинственное брашно яждь.</p>
+                <p>Прежде причастия страшныя жертвы,<br>
+                Животворящаго Тела Владычня,<br>
+                Сим помолися образом со трепетом:</p>
+            </section>
+
+            <!-- РАЗДЕЛ 3: Молитвы -->
+            <section id="molitvy" class="tab-content">
+                <h1 class="text-2xl sm:text-3xl mb-6 mt-4">Молитвы ко Святому Причащению</h1>
+                
+                <h3 class="text-lg font-bold mt-8 mb-2">Молитва 1-я, свт. Василия Великого</h3>
+                <p>Владыко Господи Иисусе Христе, Боже наш, Источниче жизни и безсмертия, всея твари видимыя и невидимыя Содетелю, безначальнаго Отца соприсносущный Сыне и собезначальный, премногия ради благости в последния дни в плоть оболкийся, и распныйся, и погребыйся за ны неблагодарныя и злонравныя, и Твоею Кровию обновивый растлевшее грехом естество наше, Сам, Безсмертный Царю, приими и мое грешнаго покаяние, и приклони ухо Твое мне, и услыши глаголы моя.</p>
+                <p>Согреших бо, Господи, согреших на небо и пред Тобою, и несмь достоин воззрети на высоту славы Твоея: прогневах бо Твою благость, Твоя заповеди преступив, и не послушав Твоих повелений. Но Ты, Господи, незлобив сый, долготерпелив же и многомилостив, не предал еси мя погибнути со беззаконьми моими, моего всячески ожидая обращения.</p>
+                <p>Ты бо рекл еси, Человеколюбче, пророком Твоим: яко хотением не хощу смерти грешника, но еже обратитися и живу быти ему. Не хощеши бо, Владыко, создания Твоею руку погубити, ниже благоволиши о погибели человечестей, но хощеши всем спастися, и в разум истины приити. Темже и аз, аще и недостоин есмь небесе и земли, и сея привременныя жизни, всего себе повинув греху, и сластем поработив, и Твой осквернив образ; но творение и создание Твое быв, не отчаяваю своего спасения окаянный, на Твое же безмерное благоутробие дерзая, прихожду.</p>
+                <p>Приими убо и мене, Человеколюбче Господи, якоже блудницу, яко разбойника, яко мытаря и яко блуднаго, и возми мое тяжкое бремя грехов, грех вземляй мира, и немощи человеческия исцеляяй, труждающияся и обремененныя к Себе призываяй и упокоеваяй, не пришедый призвати праведныя, но грешныя на покаяние.</p>
+                <p>И очисти мя от всякия скверны плоти и духа, и научи мя совершати святыню во страсе Твоем: яко да чистым сведением совести моея, святынь Твоих часть приемля, соединюся святому Телу Твоему и Крови, и имею Тебе во мне живуща и пребывающа, со Отцем, и Святым Твоим Духом.</p>
+                <p>Ей, Господи Иисусе Христе, Боже мой, и да не в суд ми будет причастие пречистых и животворящих Таин Твоих, ниже да немощен буду душею же и телом, от еже недостойне тем причащатися, но даждь ми, даже до конечнаго моего издыхания, неосужденно восприимати часть святынь Твоих, в Духа Святаго общение, в напутие живота вечнаго, и во благоприятен ответ на Страшнем судищи Твоем: яко да и аз со всеми избранными Твоими общник буду нетленных Твоих благ, яже уготовал еси любящим Тя, Господи, в нихже препрославлен еси во веки. Аминь.</p>
+
+                <h3 class="text-lg font-bold mt-8 mb-2">Молитва 2-я, свт. Иоанна Златоустого</h3>
+                <p>Господи Боже мой, вем, яко несмь достоин, ниже доволен, да под кров внидеши храма души моея, занеже весь пуст и пался есть, и не имаши во мне места достойна еже главу подклонити: но якоже с высоты нас ради смирил еси Себе, смирися и ныне смирению моему; и якоже восприял еси в вертепе и в яслех безсловесных возлещи, сице восприими и в яслех безсловесныя моея души, и во оскверненное мое тело внити.</p>
+                <p>И якоже не неудостоил еси внити, и свечеряти со грешники в дому Симона прокаженнаго, тако изволи внити и в дом смиренныя моея души, прокаженныя и грешныя; и якоже не отринул еси подобную мне блудницу и грешную, пришедшую и прикоснувшуюся Тебе, сице умилосердися и о мне грешнем, приходящем и прикасающем Ти ся; и якоже не возгнушался еси скверных ея уст и нечистых, целующих Тя, ниже моих возгнушайся сквернших оныя уст и нечистших, ниже мерзких моих и нечистых устен, и сквернаго и нечистейшаго моего языка.</p>
+                <p>Но да будет ми угль пресвятаго Твоего Тела, и честныя Твоея Крове, во освящение и просвещение и здравие смиренней моей души и телу, во облегчение тяжестей многих моих согрешений, в соблюдение от всякаго диавольскаго действа, во отгнание и возбранение злаго моего и лукаваго обычая, во умерщвление страстей, в снабдение заповедей Твоих, в приложение Божественныя Твоея благодати, и Твоего Царствия присвоение.</p>
+                <p>Не бо яко презираяй прихожду к Тебе, Христе Боже, но яко дерзая на неизреченную Твою благость, и да не на мнозе удаляяйся общения Твоего, от мысленнаго волка звероуловлен буду. Темже молюся Тебе: яко един сый Свят, Владыко, освяти мою душу и тело, ум и сердце, чревеса и утробы, и всего мя обнови, и вкорени страх Твой во удесех моих, и освящение Твое неотъемлемо от мене сотвори; и буди ми помощник и заступник, окормляя в мире живот мой, сподобляя мя и одесную Тебе предстояния со святыми Твоими, молитвами и моленьми Пречистыя Твоея Матере, невещественных Твоих служителей и пречистых сил, и всех святых, от века Тебе благоугодивших. Аминь.</p>
+
+                <h3 class="text-lg font-bold mt-8 mb-2">Молитва 3-я, прп. Симеона Метафраста</h3>
+                <p>Едине чистый и нетленный Господи, за неизреченную милость человеколюбия наше все восприемый смешение, от чистых и девственных кровей паче естества рождшия Тя, Духа Божественнаго нашествием, и благоволением Отца присносущнаго, Христе Иисусе, премудросте Божия, и мире, и сило; Твоим восприятием животворящая и спасительная страдания восприемый, крест, гвоздия, копие, смерть, умертви моя душетленныя страсти телесныя.</p>
+                <p>Погребением Твоим адова пленивый царствия, погреби моя благими помыслы лукавая советования, и лукавствия духи разори.</p>
+                <p>Тридневным Твоим и живоносным воскресением падшаго праотца возставивый, возстави мя грехом поползшагося, образы мне покаяния предлагая.</p>
+                <p>Преславным Твоим вознесением плотское обоживый восприятие, и сие десным Отца седением почтый, сподоби мя причастием святых Твоих Таин десную часть спасаемых получити.</p>
+                <p>Снитием Утешителя Твоего Духа сосуды честны священныя Твоя ученики соделавый, приятелище и мене покажи Того пришествия.</p>
+                <p>Хотяй паки приити судити вселенней правдою, благоволи и мне усрести Тя на облацех, Судию и Создателя моего, со всеми святыми Твоими: да безконечно славословлю и воспеваю Тя, со Безначальным Твоим Отцем, и Пресвятым и Благим и Животворящим Твоим Духом, ныне и присно, и во веки веков. Аминь.</p>
+
+                <h3 class="text-lg font-bold mt-8 mb-2">Молитва 4-я, прп. Иоанна Дамаскина</h3>
+                <p>Владыко Господи Иисусе Христе, Боже наш, едине имеяй власть человеком оставляти грехи, яко благ и Человеколюбец презри моя вся в ведении и не в ведении прегрешения, и сподоби мя неосужденно причаститися Божественных, и преславных, и пречистых, и животворящих Твоих Таин, не в тяжесть, ни в муку, ни в приложение грехов, но во очищение, и освящение, и обручение будущаго Живота и царствия, в стену и помощь, и в возражение сопротивных, во истребление многих моих согрешений.</p>
+                <p>Ты бо еси Бог милости, и щедрот, и человеколюбия, и Тебе славу возсылаем, со Отцем, и Святым Духом, ныне и присно, и во веки веков. Аминь.</p>
+
+                <h3 class="text-lg font-bold mt-8 mb-2">Молитва 5-я, свт. Василия Великого</h3>
+                <p>Вем, Господи, яко недостойне причащаюся пречистаго Твоего Тела и честныя Твоея Крове, и повинен есмь, и суд себе ям и пию, не разсуждая Тела и Крове Тебе Христа и Бога моего, но на щедроты Твоя дерзая прихожду к Тебе рекшему: ядый Мою плоть, и пияй Мою кровь, во Мне пребывает, и Аз в нем.</p>
+                <p>Умилосердися убо, Господи, и не обличи мя грешнаго, но сотвори со мною по милости Твей; и да будут ми святая сия во исцеление, и очищение, и просвещение, и сохранение, и спасение, и во освящение души и тела; во отгнание всякаго мечтания, и лукаваго деяния, и действа диавольскаго, мысленнe во удесех моих действуемаго, в дерзновение и любовь, яже к Тебе; во исправление жития и утверждение, в возращение добродетели и совершенства; во исполнение заповедей, в Духа Святаго общение, в напутие живота вечнаго, во ответ благоприятен на Страшнем судищи Твоем: не в суд или во осуждение.</p>
+
+                <h3 class="text-lg font-bold mt-8 mb-2">Молитва 6-я, прп. Симеона Нового Богослова</h3>
+                <p>От скверных устен, от мерзкаго сердца, от нечистаго языка, от души осквернены, приими моление, Христе мой, и не презри моих ни словес, ниже образов, ниже безстудия. Даждь ми дерзновенно глаголати, яже хощу, Христе мой, паче же и научи мя, что ми подобает творити и глаголати.</p>
+                <p>Согреших паче блудницы, яже уведе, где обитаеши, миро купивши, прииде дерзостне помазати Твои нозе, Бога моего, Владыки и Христа моего. Якоже ону не отринул еси пришедшую от сердца, ниже мене возгнушайся, Слове: Твои же ми подаждь нозе, и держати и целовати, и струями слезными, яко многоценным миром, сия дерзостно помазати. Омый мя слезами моими, очисти мя ими, Слове. Остави и прегрешения моя, и прощение ми подаждь.</p>
+                <p>Веси зол множество, веси и струпы моя, и язвы зриши моя, но и веру веси, и произволение зриши, и воздыхание слышиши. Не таится Тебе, Боже мой, Творче мой, Избавителю мой, ниже капля слезная, ниже капли часть некая. Несоделанное мое видесте очи Твои, в книзе же Твоей и еще несодеянная написана Тебе суть.</p>
+                <p>Виждь смирение мое, виждь труд мой елик, и грехи вся остави ми, Боже всяческих: да чистым сердцем, притрепетною мыслию, и душею сокрушенною, нескверных Твоих причащуся и пресвятых Таин, имиже оживляется и обожается всяк ядый же и пияй чистым сердцем; Ты бо рекл еси, Владыко мой: всяк ядый Мою Плоть, и пияй Мою Кровь, во Мне убо сей пребывает, в немже и Аз есмь. Истинно слово всяко Владыки и Бога моего: божественных бо причащаяйся и боготворящих благодатей, не убо есмь един, но с Тобою, Христе мой, Светом трисолнечным, просвещающим мир. Да убо не един пребуду кроме Тебе Живодавца, дыхания моего, живота моего, радования моего, спасения миру.</p>
+                <p>Сего ради к Тебе приступих, якоже зриши, со слезами, и душею сокрушенною избавления моих прегрешений прошу прияти ми, и Твоих живодательных и непорочных Таинств причаститися неосужденно, да пребудеши, якоже рекл еси, со мною треокаянным: да не кроме обрет мя Твоея благодати, прелестник восхитит мя льстивне, и прельстив отведет боготворящих Твоих словес. Сего ради к Тебе припадаю, и тепле вопию Ти: якоже блуднаго приял еси, и блудницу пришедшую, тако приими мя блуднаго и сквернаго, Щедре.</p>
+                <p>Душею сокрушенною, ныне бо к Тебе приходя, вем, Спасе, яко иный, якоже аз, не прегреши Тебе, ниже содея деяния, яже аз содеях. Но сие паки вем, яко не величество прегрешений, ни грехов множество превосходит Бога моего многое долготерпение, и человеколюбие крайнее; но милостию сострастия тепле кающияся, и чистиши, и светлиши, и света твориши причастники, общники Божества Твоего соделоваяй независтно, и странное и Ангелом, и человеческим мыслем, беседуеши им многажды, якоже другом Твоим истинным. Сия дерзостна творят мя, сия вперяют мя, Христе мой.</p>
+                <p>И дерзая Твоим богатым к нам благодеянием, радуяся вкупе и трепеща, огневи причащаюся трава сый, и странно чудо, орошаем неопально, якоже убо купина древле неопальне горящи.</p>
+                <p>Ныне благодарною мыслию, благодарным же сердцем, благодарными удесы моими, души и тела моего, покланяюся и величаю, и славословлю Тя, Боже мой, яко благословенна суща, ныне же и во веки.</p>
+
+                <h3 class="text-lg font-bold mt-8 mb-2">Молитва 7-я, свт. Иоанна Златоустого</h3>
+                <p>Боже, ослаби, остави, прости ми согрешения моя, елика Ти согреших, аще словом, аще делом, аще помышлением, волею или неволею, разумом или неразумием, вся ми прости яко благ и Человеколюбец, и молитвами Пречистыя Твоея Матере, умных Твоих служителей и святых сил, и всех святых от века Тебе благоугодивших, неосужденно благоволи прияти ми святое и пречистое Твое Тело и честную Кровь, во исцеление души же и тела, и во очищение лукавых моих помышлений.</p>
+                <p>Яко Твое есть царство и сила и слава, со Отцем и Святым Духом, ныне и присно, и во веки веков. Аминь.</p>
+
+                <h3 class="text-lg font-bold mt-8 mb-2">Его же, 8-я</h3>
+                <p>Несмь доволен, Владыко Господи, да внидеши под кров души моея; но понеже хощеши Ты, яко Человеколюбец, жити во мне, дерзая приступаю; повелеваеши, да отверзу двери, яже Ты един создал еси, и внидеши со человеколюбием якоже еси, внидеши и просвещаеши помраченный мой помысл.</p>
+                <p>Верую, яко сие сотвориши: не бо блудницу, со слезами пришедшую к Тебе, отгнал еси; ниже мытаря отвергл еси покаявшася; ниже разбойника, познавша Царство Твое, отгнал еси; ниже гонителя покаявшася оставил еси, еже бе: но от покаяния Тебе пришедшия вся, в лице Твоих другов вчинил еси, Един сый благословенный всегда, ныне и в безконечныя веки. Аминь.</p>
+
+                <h3 class="text-lg font-bold mt-8 mb-2">Его же, 9-я</h3>
+                <p>Господи Иисусе Христе Боже мой, ослаби, остави, очисти и прости ми грешному, и непотребному, и недостойному рабу Твоему, прегрешения, и согрешения, и грехопадения моя, елика Ти от юности моея, даже до настоящего дне и часа согреших: аще в разуме и в неразумии, аще в словесех или делех, или помышлениих и мыслех, и начинаниих, и всех моих чувствах.</p>
+                <p>И молитвами безсеменно рождшия Тя, Пречистыя и Приснодевы Марии, Матере Твоея, единыя непостыдныя надежды и предстательства и спасения моего, сподоби мя неосужденно причаститися пречистых, безсмертных, животворящих и страшных Твоих Таинств, во оставление грехов и в жизнь вечную: во освящение, и просвещение, крепость, исцеление, и здравие души же и тела, и в потребление и всесовершенное погубление лукавых моих помыслов, и помышлений, и предприятий, и нощных мечтаний, темных и лукавых духов; яко Твое есть царство, и сила, и слава, и честь, и поклонение, со Отцем и Святым Твоим Духом, ныне и присно, и во веки веков. Аминь.</p>
+
+                <h3 class="text-lg font-bold mt-8 mb-2">Молитва 10-я, прп. Иоанна Дамаскина</h3>
+                <p>Пред дверьми храма Твоего предстою, и лютых помышлений не отступаю; но Ты, Христе Боже, мытаря оправдивый, и хананею помиловавый, и разбойнику рая двери отверзый, отверзи ми утробы человеколюбия Твоего и приими мя приходяща и прикасающася Тебе, яко блудницу, и кровоточивую: ова убо края ризы Твоея коснувшися, удобь исцеление прият, ова же пречистеи Твои нозе удержавши, разрешение грехов понесе.</p>
+                <p>Аз же, окаянный, все Твое Тело дерзая восприяти, да не опален буду; но приими мя, якоже оныя, и просвети моя душевныя чувства, попаляя моя греховныя вины, молитвами безсеменно Рождшия Тя, и Небесных сил; яко благословен еси во веки веков. Аминь.</p>
+
+                <h3 class="text-lg font-bold mt-8 mb-2">Молитва свт. Иоанна Златоустого</h3>
+                <p>Верую, Господи, и исповедую, яко Ты еси воистинну Христос, Сын Бога живаго, пришедый в мир грешныя спасти, от нихже первый есмь аз. Еще верую, яко сие есть самое пречистое Тело Твое, и сия есть самая честная Кровь Твоя. Молюся убо Тебе: помилуй мя, и прости ми прегрешения моя, вольная и невольная, яже словом, яже делом, яже ведением и неведением, и сподоби мя неосужденно причаститися пречистых Твоих Таинств, во оставление грехов, и в жизнь вечную. Аминь.</p>
+
+                <p class="mt-6"><span class="r">Приходя же причаститься, произноси мысленно эти стихи прп. Симеона Метафраста:</span></p>
+                <p>Се приступаю к Божественному Причащению. Содетелю, да не опалиши мя приобщением: Огнь бо еси, недостойныя попаляяй. Но убо очисти мя от всякия скверны.</p>
+                
+                <p class="mt-4"><span class="r">Затем:</span></p>
+                <p class="text-center font-bold text-[#a02020] text-xl my-4">
+                    Вечери Твоея тайныя днесь, Сыне Божий, причастника мя приими; не бо врагом Твоим тайну повем, ни лобзания Ти дам, яко Иуда, но яко разбойник исповедаю Тя: помяни мя, Господи, во Царствии Твоем.
+                </p>
+
+                <p class="mt-4"><span class="r">И стихи:</span></p>
+                <p>Боготворящую Кровь ужаснися, человече, зря: Огнь бо есть, недостойныя попаляяй. Божественное Тело и обожает мя и питает: Обожает дух, ум же питает странно.</p>
+
+                <p class="mt-4"><span class="r">Потом тропари:</span></p>
+                <p>Усладил мя еси любовию, Христе, и изменил мя еси Божественным Твоим рачением; но попали огнем невещественным грехи моя, и насытитися еже в Тебе наслаждения сподоби: да ликуя возвеличаю, Блаже, два пришествия Твоя.</p>
+                <p>Во светлостех Святых Твоих како вниду недостойный? Аще бо дерзну совнити в чертог, одежда мя обличает, яко несть брачна, и связан извержен буду от Ангелов. Очисти, Господи, скверну души моея, и спаси мя, яко Человеколюбец.</p>
+
+                <p class="mt-4"><span class="r">Также молитву:</span></p>
+                <p>Владыко Человеколюбче, Господи Иисусе Христе Боже мой, да не в суд ми будут Святая сия, за еже недостойну ми быти: но во очищение и освящение души же и тела, и во обручение будущия жизни и царствия. Мне же, еже прилеплятися Богу, благо есть, полагати во Господе упование спасения моего.</p>
+
+                <p class="mt-4"><span class="r">И еще:</span></p>
+                <p class="text-center font-bold text-[#a02020] text-xl my-4">
+                    Вечери Твоея тайныя днесь, Сыне Божий, причастника мя приими; не бо врагом Твоим тайну повем, ни лобзания Ти дам, яко Иуда, но яко разбойник исповедаю Тя: помяни мя, Господи, во Царствии Твоем.
+                </p>
+            </section>
         </div>
-    </div>
+    </main>
+
+    <footer class="bg-[#2c2c2c] text-gray-400 text-center py-6 border-t-4 border-[#8b0000]">
+        <p class="text-sm">Слава Богу за всё!</p>
+    </footer>
 
     <script>
-        // --- ДАНІ ТА СИНХРОНІЗАЦІЯ ---
-        let globalHomeworks = JSON.parse(localStorage.getItem('portal-template-hw')) || [];
-        let globalMaterials = JSON.parse(localStorage.getItem('portal-template-mat')) || [];
-        let customZoomLinks = JSON.parse(localStorage.getItem('portal-template-zoom')) || {};
-        
-        let currentHwContext = null;
-        let currentMaterialFilter = 'Всі';
-        let currentZoomSubj = null;
-        let currentConfirmCallback = null;
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
 
-        // Функції для модалки підтвердження
-        function openConfirmModal(title, text, callback) {
-            currentConfirmCallback = callback;
-            document.getElementById('confirm-title').innerText = title;
-            document.getElementById('confirm-text').innerText = text;
-            const m = document.getElementById('confirm-modal');
-            m.classList.remove('hidden');
-            setTimeout(() => m.style.opacity = 1, 10);
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.borderBottom = 'none';
+            });
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.add('active');
+            activeBtn.style.borderBottom = '3px solid #ff4d4d';
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function closeConfirmModal() {
-            const m = document.getElementById('confirm-modal');
-            m.style.opacity = 0;
-            setTimeout(() => { m.classList.add('hidden'); currentConfirmCallback = null; }, 300);
+        let currentFontSize = 18;
+
+        function adjustFontSize(change) {
+            currentFontSize += change;
+            if (currentFontSize < 14) currentFontSize = 14;
+            if (currentFontSize > 32) currentFontSize = 32;
+            document.getElementById('prayer-container').style.fontSize = currentFontSize + 'px';
         }
 
-        document.getElementById('confirm-btn-yes').addEventListener('click', () => {
-            if (currentConfirmCallback) currentConfirmCallback();
-            closeConfirmModal();
+        document.addEventListener('DOMContentLoaded', () => {
+            switchTab('canons');
         });
-
-        function promptDeleteHw(id) {
-            openConfirmModal("Видалити ДЗ?", "Цю дію неможливо скасувати. Завдання буде видалено для всієї групи.", () => deleteHw(id));
-        }
-
-        function promptDeleteMaterial(id) {
-            openConfirmModal("Видалити матеріал?", "Цю дію неможливо скасувати. Матеріал буде видалено.", () => deleteMaterial(id));
-        }
-
-        // Функція для оновлення локальних даних з хмари (Firebase)
-        window.updateCloudData = function(type, data) {
-            if (type === 'zoom') {
-                customZoomLinks = data;
-                localStorage.setItem('portal-template-zoom', JSON.stringify(customZoomLinks));
-                refreshViews(['schedule', 'main', 'lectures']);
-            } else if (type === 'homeworks') {
-                globalHomeworks = data;
-                localStorage.setItem('portal-template-hw', JSON.stringify(globalHomeworks));
-                if(state.view === 'homework') renderHomeworkHistory();
-                refreshViews(['schedule', 'main', 'lectures']);
-            } else if (type === 'materials') {
-                globalMaterials = data;
-                localStorage.setItem('portal-template-mat', JSON.stringify(globalMaterials));
-                if(state.view === 'materials') renderMaterials();
-            }
-        };
-
-        function refreshViews(viewsToUpdate) {
-            if(viewsToUpdate.includes(state.view)) {
-                if(state.view === 'schedule') renderPersonalSchedule();
-                if(state.view === 'main') renderMainTabSchedule();
-                if(state.view === 'lectures') renderGeneralSchedule();
-            }
-        }
-
-        // ШАБЛОННІ ДАНІ: Замініть на власні
-
-        const zoomLinks = {
-            "математика": "https://zoom.us/j/0000000000",
-            "фізика": "https://zoom.us/j/1111111111",
-            "іноземна": "https://zoom.us/j/2222222222",
-        };
-
-        const discColors = {
-            "підгрупа_а": "bg-emerald-100 text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-400 border-emerald-300 dark:border-emerald-500/20",
-            "підгрупа_б": "bg-amber-100 text-amber-800 dark:bg-amber-500/10 dark:text-amber-400 border-amber-300 dark:border-amber-500/20",
-            "вибірковий_1": "bg-indigo-100 text-indigo-800 dark:bg-indigo-500/10 dark:text-indigo-400 border-indigo-300 dark:border-indigo-500/20",
-        };
-
-        const students = [
-            { id: 1, name: "Іванов Іван Іванович", electives: ["підгрупа_а", "вибірковий_1"], isStarosta: true },
-            { id: 2, name: "Петренко Петро Петрович", electives: ["підгрупа_б"] },
-            { id: 3, name: "Сидоренко Анна Михайлівна", electives: ["підгрупа_а"] },
-            { id: 4, name: "Шевченко Тарас Олександрович", electives: ["підгрупа_б", "вибірковий_1"] },
-            { id: 5, name: "Коваленко Олена Василівна", electives: ["підгрупа_а"] },
-        ];
-
-        const timeSlots = [
-            { start: "08:30", end: "09:45" }, { start: "10:00", end: "11:15" },
-            { start: "11:30", end: "12:45" }, { start: "13:00", end: "14:15" },
-            { start: "14:30", end: "15:45" }, { start: "16:00", end: "17:15" },
-            { start: "17:30", end: "18:45" }
-        ];
-
-        // Універсальне розклад для верхнього/нижнього тижня
-        const mainScheduleData = {
-            upper: [
-                { day: "Понеділок", pairs: [
-                    { num: 1, time: "08:30-09:45", subj: "Вища Математика", type: "general" }, 
-                    { num: 2, time: "10:00-11:15", subj: "Іноземна мова", type: "lang", map: "foreign_language" }
-                ]},
-                { day: "Вівторок", pairs: [
-                    { num: 2, time: "10:00-11:15", subj: "Фізика", type: "general" }, 
-                    { num: 3, time: "11:30-12:45", subj: "Спец. курс (Вибірковий)", type: "elective", map: "вибірковий_1" }
-                ]},
-            ],
-            lower: [
-                { day: "Понеділок", pairs: [
-                    { num: 2, time: "10:00-11:15", subj: "Іноземна мова", type: "lang", map: "foreign_language" },
-                    { num: 3, time: "11:30-12:45", subj: "Основи програмування", type: "general" }
-                ]},
-                { day: "Середа", pairs: [
-                    { num: 1, time: "08:30-09:45", subj: "Вища Математика (Практика)", type: "general" }
-                ]},
-            ]
-        };
-
-        // Розклад для начитки / специфічних тижнів
-        const scheduleData = {
-            1: [
-                { day: "Понеділок", date: "01.09", pairs: [
-                    { num: 1, time: "08:30-09:45", subj: "Вступна лекція", type: "general", zoomKey: "загальне" }
-                ]},
-            ],
-            2: [
-                { day: "Вівторок", date: "09.09", pairs: [
-                    { num: 2, time: "10:00-11:15", subj: "Математика Л", type: "general", zoomKey: "математика" }
-                ]},
-            ]
-        };
-
-        let state = {
-            view: 'schedule',
-            personalMode: 'main',
-            selectedStudent: null,
-            week: 1,
-            genWeek: 1,
-            mainViewWeek: 'upper',
-            mainActiveWeekNum: null,
-            persMainWeek: 'upper',
-            isDark: false
-        };
-
-        // Логіка визначення поточного "навчального" тижня (приклад)
-        function getClosestMainWeek() {
-            // У простому шаблоні просто повертаємо 1 тиждень
-            return { num: 1, type: 'upper', start: new Date(), end: new Date() };
-        }
-
-        window.onload = () => {
-            state.week = 1;
-            state.genWeek = 1;
-            
-            const closestMain = getClosestMainWeek();
-            state.mainActiveWeekNum = closestMain.num;
-            state.mainViewWeek = closestMain.type;
-            
-            const savedDark = localStorage.getItem('darkMode') === 'true';
-            if (savedDark) { 
-                state.isDark = true; 
-                document.documentElement.classList.add('dark'); 
-                document.getElementById('pc-dark-icon').classList.replace('ph-moon', 'ph-sun');
-                document.getElementById('mob-dark-icon').classList.replace('ph-moon', 'ph-sun');
-                if(document.getElementById('auth-dark-icon')) document.getElementById('auth-dark-icon').classList.replace('ph-moon', 'ph-sun');
-            }
-            
-            const savedId = localStorage.getItem('selectedStudentId');
-            if (savedId) {
-                state.selectedStudent = students.find(s => s.id == savedId);
-                if(state.selectedStudent) initApp();
-                else showAuthScreen();
-            } else { 
-                showAuthScreen(); 
-            }
-        };
-
-        function initApp() {
-            document.getElementById('auth-screen').classList.add('hidden');
-            
-            const nameEl = document.getElementById('pc-user-name');
-            const avatarPc = document.getElementById('pc-user-avatar');
-            const avatarMob = document.getElementById('mob-user-avatar');
-            
-            nameEl.textContent = state.selectedStudent.name;
-            avatarPc.textContent = state.selectedStudent.name.charAt(0);
-            avatarMob.textContent = state.selectedStudent.name.charAt(0);
-            
-            if (state.selectedStudent.isStarosta) {
-                document.getElementById('pc-user-role').innerHTML = `<span class="text-amber-500 font-bold">Староста / Адмін</span>`;
-            } else {
-                document.getElementById('pc-user-role').innerHTML = `Студент`;
-            }
-
-            renderRegister();
-            switchView('schedule');
-            updateLiveStatus();
-            setInterval(updateLiveStatus, 1000);
-        }
-
-        function showAuthScreen() {
-            document.getElementById('auth-screen').classList.remove('hidden');
-            filterAuthList();
-        }
-
-        function filterAuthList() {
-            const q = document.getElementById('auth-search').value.toLowerCase();
-            const list = document.getElementById('auth-list');
-            list.innerHTML = '';
-            const filtered = students.filter(s => s.name.toLowerCase().includes(q));
-            
-            if (filtered.length > 0) {
-                list.classList.remove('hidden');
-                filtered.forEach(s => {
-                    const d = document.createElement('div');
-                    d.className = "px-4 py-3 rounded-xl glass-card hover:bg-white/50 dark:hover:bg-white/10 cursor-pointer font-bold text-sm transition-all flex items-center justify-between";
-                    const starostaBadge = s.isStarosta ? `<span class="px-2 py-0.5 bg-amber-500/20 text-amber-600 dark:text-amber-400 text-[9px] font-extrabold uppercase rounded-lg border border-amber-500/30">Адмін</span>` : '';
-                    d.innerHTML = `<span class="text-slate-800 dark:text-zinc-200">${s.name}</span>${starostaBadge}`;
-                    d.onclick = () => { localStorage.setItem('selectedStudentId', s.id); state.selectedStudent = s; initApp(); };
-                    list.appendChild(d);
-                });
-            } else { list.classList.add('hidden'); }
-        }
-
-        function logout() { localStorage.removeItem('selectedStudentId'); location.reload(); }
-
-        function toggleDarkMode() {
-            state.isDark = !state.isDark;
-            document.documentElement.classList.toggle('dark', state.isDark);
-            
-            const pcIcon = document.getElementById('pc-dark-icon');
-            const mobIcon = document.getElementById('mob-dark-icon');
-            const authIcon = document.getElementById('auth-dark-icon');
-            
-            if(state.isDark) {
-                pcIcon.classList.replace('ph-moon', 'ph-sun');
-                mobIcon.classList.replace('ph-moon', 'ph-sun');
-                if(authIcon) authIcon.classList.replace('ph-moon', 'ph-sun');
-            } else {
-                pcIcon.classList.replace('ph-sun', 'ph-moon');
-                mobIcon.classList.replace('ph-sun', 'ph-moon');
-                if(authIcon) authIcon.classList.replace('ph-sun', 'ph-moon');
-            }
-            localStorage.setItem('darkMode', state.isDark);
-        }
-
-        function switchView(view) {
-            state.view = view;
-            
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.getElementById(`view-${view}`).classList.add('active');
-            document.getElementById('main-scroll-area').scrollTop = 0;
-
-            document.querySelectorAll('.nav-btn-pc').forEach(btn => {
-                if(btn.id === `nav-pc-${view}`) {
-                    btn.classList.add('glass-card', 'text-indigo-700', 'dark:text-indigo-400');
-                    btn.classList.remove('text-slate-700', 'dark:text-slate-300', 'border-transparent');
-                    btn.querySelector('i').classList.replace('ph', 'ph-fill');
-                } else {
-                    btn.classList.remove('glass-card', 'text-indigo-700', 'dark:text-indigo-400');
-                    btn.classList.add('text-slate-700', 'dark:text-slate-300', 'border-transparent');
-                    btn.querySelector('i').classList.replace('ph-fill', 'ph');
-                }
-            });
-
-            document.querySelectorAll('.nav-btn-mob').forEach(btn => {
-                const icon = btn.querySelector('i');
-                if(btn.id === `nav-mob-${view}`) {
-                    btn.classList.add('text-indigo-600', 'dark:text-indigo-400');
-                    btn.classList.remove('text-slate-600', 'dark:text-slate-400');
-                    icon.classList.replace('ph', 'ph-fill');
-                    icon.classList.add('scale-125', '-translate-y-1');
-                } else {
-                    btn.classList.remove('text-indigo-600', 'dark:text-indigo-400');
-                    btn.classList.add('text-slate-600', 'dark:text-slate-400');
-                    icon.classList.replace('ph-fill', 'ph');
-                    icon.classList.remove('scale-125', '-translate-y-1');
-                }
-            });
-
-            if(view === 'schedule') renderPersonalSchedule();
-            if(view === 'main') {
-                updateWeekCardHighlight();
-                renderMainTabSchedule();
-            }
-            if(view === 'lectures') renderGeneralSchedule();
-            if(view === 'homework') renderHomeworkHistory();
-            if(view === 'materials') renderMaterials();
-        }
-
-        function setPersonalMode(mode) { state.personalMode = mode; renderPersonalSchedule(); }
-        
-        function setMainViewWeek(w) { 
-            state.mainViewWeek = w; 
-            state.mainActiveWeekNum = null;
-            updateWeekCardHighlight();
-            renderMainTabSchedule(); 
-        }
-
-        function setMainSpecificWeek(num, type) {
-            state.mainActiveWeekNum = num;
-            state.mainViewWeek = type;
-            updateWeekCardHighlight();
-            renderMainTabSchedule();
-        }
-
-        function updateWeekCardHighlight() {
-            document.querySelectorAll('.week-card').forEach(card => {
-                if(parseInt(card.dataset.week) === state.mainActiveWeekNum) {
-                    card.classList.add('ring-2', 'ring-indigo-500', 'dark:ring-indigo-400', 'bg-white/60', 'dark:bg-white/10');
-                } else {
-                    card.classList.remove('ring-2', 'ring-indigo-500', 'dark:ring-indigo-400', 'bg-white/60', 'dark:bg-white/10');
-                }
-            });
-        }
-
-        function setPersMainWeek(w) { state.persMainWeek = w; renderPersonalSchedule(); }
-
-        function renderMainTabSchedule() {
-            const grid = document.getElementById('main-schedule-grid'); grid.innerHTML = '';
-            const btnUp = document.getElementById('btn-upper');
-            const btnLo = document.getElementById('btn-lower');
-            
-            btnUp.className = (state.mainViewWeek === 'upper' && !state.mainActiveWeekNum) ? "flex-1 md:flex-none px-6 py-2.5 rounded-xl text-xs font-extrabold uppercase bg-indigo-600 text-white shadow-md transition-all duration-300" : "flex-1 md:flex-none px-6 py-2.5 rounded-xl text-xs font-bold uppercase text-slate-700 dark:text-slate-300 hover:bg-white/50 dark:hover:bg-white/10 transition-all duration-300 border border-transparent";
-            btnLo.className = (state.mainViewWeek === 'lower' && !state.mainActiveWeekNum) ? "flex-1 md:flex-none px-6 py-2.5 rounded-xl text-xs font-extrabold uppercase bg-indigo-600 text-white shadow-md transition-all duration-300" : "flex-1 md:flex-none px-6 py-2.5 rounded-xl text-xs font-bold uppercase text-slate-700 dark:text-slate-300 hover:bg-white/50 dark:hover:bg-white/10 transition-all duration-300 border border-transparent";
-
-            (mainScheduleData[state.mainViewWeek] || []).forEach((day, index) => {
-                const card = document.createElement('div');
-                card.className = "liquid-glass p-6 md:p-8 flex flex-col transition-all duration-300 opacity-0 animate-fade-in-up";
-                card.style.animationDelay = `${index * 100}ms`;
-                card.innerHTML = `<h3 class="font-extrabold text-xl uppercase tracking-tight text-slate-900 dark:text-white border-b border-slate-300/60 dark:border-white/10 pb-4 mb-5 flex items-center gap-3"><div class="w-2 h-6 rounded-full bg-indigo-500"></div>${day.day}</h3><div class="space-y-4 flex-grow">${day.pairs.map((p, i) => renderPair(p, true, false, { isMainTab: true, day: day.day, weekType: state.mainViewWeek, weekNum: state.mainActiveWeekNum })).join('')}</div>`;
-                grid.appendChild(card);
-            });
-        }
-
-        function renderPersonalSchedule() {
-            const grid = document.getElementById('schedule-grid'); grid.innerHTML = '';
-            const weekArea = document.getElementById('personal-week-area');
-            if(!state.selectedStudent) return;
-
-            const bLec = document.getElementById('btn-mode-lec');
-            const bMain = document.getElementById('btn-mode-main');
-            
-            bLec.className = state.personalMode === 'lectures' ? "flex-1 md:flex-none px-6 py-2.5 rounded-xl text-[11px] font-extrabold uppercase bg-indigo-600 text-white shadow-md transition-all duration-300" : "flex-1 md:flex-none px-6 py-2.5 rounded-xl text-[11px] font-bold uppercase text-slate-700 dark:text-slate-300 hover:bg-white/50 dark:hover:bg-white/10 transition-all border border-transparent";
-            bMain.className = state.personalMode === 'main' ? "flex-1 md:flex-none px-6 py-2.5 rounded-xl text-[11px] font-extrabold uppercase bg-indigo-600 text-white shadow-md transition-all duration-300" : "flex-1 md:flex-none px-6 py-2.5 rounded-xl text-[11px] font-bold uppercase text-slate-700 dark:text-slate-300 hover:bg-white/50 dark:hover:bg-white/10 transition-all border border-transparent";
-
-            let cardIndex = 0;
-            if (state.personalMode === 'lectures') {
-                weekArea.innerHTML = `<div id="week-selector-pers" class="flex gap-2 p-1.5 glass-card rounded-xl w-full overflow-x-auto no-scrollbar shadow-sm"></div>`;
-                updateWeekSelectors();
-                (scheduleData[state.week] || []).forEach(day => {
-                    const pairs = filterPairs(day.pairs);
-                    if(pairs.length > 0) { appendCard(grid, day.day, day.date, pairs, cardIndex); cardIndex++; }
-                });
-            } else {
-                weekArea.innerHTML = `<div class="flex gap-1.5 p-1.5 glass-card rounded-xl font-bold w-full md:w-auto shadow-sm"><button onclick="setPersMainWeek('upper')" class="flex-1 md:flex-none px-6 py-2.5 rounded-xl text-[11px] uppercase transition-all duration-300 ${state.persMainWeek === 'upper' ? 'bg-indigo-600 text-white shadow-md font-extrabold border-transparent' : 'text-slate-700 dark:text-slate-400 border border-transparent hover:bg-white/50 dark:hover:bg-white/10'}">Верхній</button><button onclick="setPersMainWeek('lower')" class="flex-1 md:flex-none px-6 py-2.5 rounded-xl text-[11px] uppercase transition-all duration-300 ${state.persMainWeek === 'lower' ? 'bg-indigo-600 text-white shadow-md font-extrabold border-transparent' : 'text-slate-700 dark:text-slate-400 border border-transparent hover:bg-white/50 dark:hover:bg-white/10'}">Нижній</button></div>`;
-                (mainScheduleData[state.persMainWeek] || []).forEach(day => {
-                    const pairs = filterPairs(day.pairs);
-                    if(pairs.length > 0) { appendCard(grid, day.day, null, pairs, cardIndex); cardIndex++; }
-                });
-            }
-        }
-
-        // Універсальний фільтр пар для студента
-        function filterPairs(pairs) {
-            const studentElectives = state.selectedStudent.electives.map(e => e.toLowerCase());
-            return pairs.filter(p => {
-                if (p.type === 'general') return true;
-                if (p.type === 'lang') return studentElectives.some(el => ['підгрупа_а','підгрупа_б'].includes(el));
-                if (p.type === 'elective') return studentElectives.includes(p.map?.toLowerCase());
-                return false;
-            });
-        }
-
-        function appendCard(grid, day, date, pairs, index) {
-            const card = document.createElement('div');
-            card.className = "liquid-glass p-6 md:p-8 flex flex-col opacity-0 animate-fade-in-up z-10";
-            card.style.animationDelay = `${index * 100}ms`;
-            card.innerHTML = `<div class="flex justify-between items-center mb-5 border-b border-slate-300/60 dark:border-white/10 pb-4"><h3 class="font-extrabold text-slate-900 dark:text-white text-xl uppercase tracking-tight flex items-center gap-3"><div class="w-2 h-6 rounded-full bg-indigo-500/80"></div>${day}</h3>${date ? `<span class="text-[11px] font-mono font-extrabold text-slate-600 dark:text-slate-300 px-3 py-1 glass-card shadow-sm rounded-lg">${date}</span>` : ''}</div><div class="space-y-4 flex-grow">${pairs.map((p, i) => renderPair(p, true, true)).join('')}</div>`;
-            grid.appendChild(card);
-        }
-
-        function renderPair(p, showZoom = true, isPersonal = false, hwContext = null) {
-            let displaySubj = p.subj;
-            
-            let zoomUrl = (p.zoomKey && zoomLinks[p.zoomKey]) ? zoomLinks[p.zoomKey] : customZoomLinks[p.subj];
-            let z = '';
-            
-            // В шаблоні дозволимо старостам редагувати Zoom
-            const canEditZoom = state.selectedStudent && state.selectedStudent.isStarosta;
-
-            if (showZoom && zoomUrl) {
-                z = `<div class="mt-4 relative group">
-                        <a href="${zoomUrl}" target="_blank" class="flex items-center justify-center gap-2 w-full py-2.5 bg-blue-50 text-blue-600 dark:bg-[#2D8CFF]/10 dark:text-[#2D8CFF] hover:bg-blue-100 dark:hover:bg-[#2D8CFF]/20 border border-blue-200 dark:border-[#2D8CFF]/20 rounded-xl text-[11px] font-extrabold transition-all uppercase tracking-wider hover:shadow-md hover:-translate-y-0.5">
-                            <i class="ph-fill ph-video-camera text-base"></i> Zoom Meeting
-                        </a>`;
-                if (canEditZoom) {
-                    z += `<button onclick="openZoomModal('${p.subj}')" class="absolute -top-2 -right-2 w-7 h-7 bg-white dark:bg-zinc-800 text-blue-500 rounded-full shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity border border-blue-100 dark:border-blue-900/50 hover:bg-blue-50 hover:scale-110">
-                            <i class="ph ph-pencil-simple text-sm"></i>
-                          </button>`;
-                }
-                z += `</div>`;
-            } else if (showZoom && !zoomUrl && canEditZoom) {
-                z = `<button onclick="openZoomModal('${p.subj}')" class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 glass-card text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 border border-dashed border-slate-300 dark:border-white/10 rounded-xl text-[11px] font-extrabold transition-all uppercase tracking-wider hover:shadow-md hover:-translate-y-0.5">
-                        <i class="ph ph-plus-circle text-base"></i> Додати Zoom
-                     </button>`;
-            }
-            
-            let n = isPersonal ? `<textarea oninput="localStorage.setItem('note-${state.selectedStudent.id}-${p.num}-${p.subj}', this.value)" placeholder="Додати нотатку..." class="mt-3 w-full p-3 text-[11px] bg-slate-50 border border-slate-200 text-slate-800 placeholder-slate-400 dark:bg-black/30 dark:border-white/10 dark:text-slate-300 dark:placeholder-slate-500 rounded-xl outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400 h-16 resize-none custom-scroll transition-colors font-medium shadow-inner block">${localStorage.getItem(`note-${state.selectedStudent.id}-${p.num}-${p.subj}`) || ''}</textarea>` : '';
-            
-            let hwHtml = '';
-            if (hwContext && hwContext.isMainTab) {
-                if (hwContext.weekNum !== null && hwContext.weekNum !== undefined) {
-                    const currentHwList = globalHomeworks.filter(h => h.subj === p.subj && h.weekNum === hwContext.weekNum && h.day === hwContext.day && h.num === p.num);
-                    
-                    if (currentHwList.length > 0) {
-                        hwHtml += `<div class="mt-4 space-y-2">`;
-                        currentHwList.forEach(h => {
-                            const authorObj = students.find(s => s.name === h.author);
-                            const starostaBadge = authorObj && authorObj.isStarosta ? `<span class="text-amber-600 dark:text-amber-500 text-[9px] ml-1 font-bold uppercase">Адмін</span>` : '';
-                            
-                            const canDelete = state.selectedStudent && (state.selectedStudent.name === h.author || state.selectedStudent.isStarosta);
-                            const deleteBtn = canDelete ? `<button onclick="promptDeleteHw('${h.id}')" class="absolute top-2.5 right-2 w-6 h-6 flex items-center justify-center glass-card border border-slate-200 dark:border-white/10 text-slate-500 hover:text-red-500 rounded-lg transition shadow-sm active:scale-90"><i class="ph ph-trash"></i></button>` : '';
-
-                            const deadlineHtml = h.deadline && h.deadline !== 'Не вказано' ? `<div class="text-[9px] font-extrabold tracking-wide text-rose-600 dark:text-rose-500 mb-1.5 flex items-center gap-1"><i class="ph ph-clock"></i> ${h.deadline}</div>` : '';
-
-                            hwHtml += `
-                                <div class="bg-indigo-50/50 border-indigo-200 dark:bg-indigo-500/10 p-3 rounded-2xl border dark:border-indigo-500/20 relative pr-10 shadow-sm backdrop-blur-md">
-                                    ${deleteBtn}
-                                    ${deadlineHtml}
-                                    <p class="text-[12px] text-slate-800 dark:text-slate-200 font-bold leading-relaxed">${h.text.replace(/\n/g, '<br>')}</p>
-                                    <div class="text-[9px] text-slate-600 dark:text-slate-400 mt-2 flex justify-between items-center pt-2 border-t border-indigo-200/60 dark:border-indigo-500/20">
-                                        <span class="font-bold flex items-center text-indigo-900 dark:text-indigo-300"><i class="ph ph-pencil-simple mr-1"></i> ${h.author.split(' ')[0]} ${starostaBadge}</span>
-                                        <span class="font-mono text-indigo-700 dark:text-indigo-400">${h.date.split(',')[0]}</span>
-                                    </div>
-                                </div>
-                            `;
-                        });
-                        hwHtml += `</div>`;
-                    }
-
-                    hwHtml += `<button onclick="openHwModal('${p.subj}', '${hwContext.weekType}', '${hwContext.day}', ${p.num}, ${hwContext.weekNum})" class="mt-3 w-full py-2.5 glass-card text-slate-700 dark:text-slate-300 text-[10px] font-extrabold uppercase tracking-wide rounded-xl transition-all border border-dashed hover:border-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-400 hover:bg-white/50 dark:hover:bg-indigo-500/10 flex items-center justify-center gap-2"><i class="ph ph-plus"></i> Додати завдання на тиждень ${hwContext.weekNum}</button>`;
-                } else {
-                    hwHtml += `<div class="mt-3 text-[10px] text-center text-slate-500 dark:text-slate-400 font-bold glass-card py-2.5 rounded-xl border border-dashed">Оберіть конкретний тиждень вище, щоб керувати ДЗ</div>`;
-                }
-            }
-
-            const c = p.type === 'general' ? 'pair-general' : (p.type === 'lang' ? 'pair-lang' : 'pair-elective');
-            return `<div class="pair-card pair-item ${c} p-5 glass-card rounded-2xl shadow-md border border-slate-200 dark:border-white/10 hover:-translate-y-1 transition-transform"><div class="flex justify-between items-center text-[9px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2"><span>${p.num} ПАРА • ${p.time}</span><span class="px-2 py-0.5 glass-input text-slate-800 dark:text-slate-300 rounded-md shadow-sm opacity-90">${p.type}</span></div><div class="text-base font-extrabold leading-tight text-slate-900 dark:text-zinc-100 tracking-tight">${displaySubj}</div>${z}${n}${hwHtml}</div>`;
-        }
-
-        function openHwModal(subj, weekType, day, num, weekNum) {
-            currentHwContext = { subj, weekType, day, num, weekNum };
-            const m = document.getElementById('hw-modal');
-            m.classList.remove('hidden');
-            setTimeout(() => m.style.opacity = 1, 10);
-            document.getElementById('hw-textarea').value = '';
-            document.getElementById('hw-deadline').value = '';
-            document.getElementById('hw-modal-title').innerText = `Тиждень ${weekNum}, ${day}, ${num} пара: ${subj}`;
-            setTimeout(() => document.getElementById('hw-textarea').focus(), 100);
-        }
-
-        function closeHwModal() { 
-            const m = document.getElementById('hw-modal');
-            m.style.opacity = 0;
-            setTimeout(() => { m.classList.add('hidden'); currentHwContext = null; }, 300);
-        }
-
-        async function saveHw() {
-            const text = document.getElementById('hw-textarea').value.trim();
-            if(!text) return;
-            const deadline = document.getElementById('hw-deadline').value.trim() || 'Не вказано';
-            const docId = Date.now().toString();
-            const newHw = {
-                id: docId, ...currentHwContext, text: text, deadline: deadline,
-                author: state.selectedStudent.name,
-                date: new Date().toLocaleString('uk-UA', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })
-            };
-            
-            if (window.saveToCloud) {
-                const success = await window.saveToCloud('homeworks', docId, newHw);
-                if (!success) fallbackSaveHw(newHw);
-            } else {
-                fallbackSaveHw(newHw);
-            }
-            
-            closeHwModal();
-        }
-
-        function fallbackSaveHw(newHw) {
-            globalHomeworks.unshift(newHw);
-            localStorage.setItem('portal-template-hw', JSON.stringify(globalHomeworks));
-            refreshViews(['schedule', 'main', 'homework']);
-        }
-
-        async function deleteHw(id) {
-            if (window.deleteFromCloud) {
-                const success = await window.deleteFromCloud('homeworks', id);
-                if (!success) fallbackDeleteHw(id);
-            } else {
-                fallbackDeleteHw(id);
-            }
-        }
-        
-        function fallbackDeleteHw(id) {
-            globalHomeworks = globalHomeworks.filter(hw => hw.id != id);
-            localStorage.setItem('portal-template-hw', JSON.stringify(globalHomeworks));
-            refreshViews(['schedule', 'main', 'homework']);
-        }
-
-        function renderHomeworkHistory() {
-            const list = document.getElementById('homework-history-list');
-            list.innerHTML = '';
-            if (globalHomeworks.length === 0) {
-                list.innerHTML = `<div class="text-center p-12 text-slate-600 dark:text-slate-400 font-extrabold border-2 border-dashed border-slate-300 dark:border-white/10 rounded-[2rem] liquid-glass opacity-0 animate-fade-in-up">Тут поки порожньо.</div>`;
-                return;
-            }
-            globalHomeworks.forEach((hw, index) => {
-                const item = document.createElement('div');
-                item.className = "liquid-glass p-6 rounded-[2rem] transition-all hover:shadow-float relative z-10 opacity-0 animate-fade-in-up";
-                item.style.animationDelay = `${index * 100}ms`;
-                
-                const weekLabel = hw.weekNum ? `Тиждень ${hw.weekNum} (${hw.weekType === 'upper' ? 'Верхній' : 'Нижній'})` : (hw.week === 'upper' || hw.weekType === 'upper' ? 'Верхній тиждень' : 'Нижній тиждень');
-                const authorObj = students.find(s => s.name === hw.author);
-                const starostaBadge = authorObj && authorObj.isStarosta ? `<span class="text-amber-600 dark:text-amber-500 text-[9px] ml-1 font-bold uppercase">Адмін</span>` : '';
-                
-                const canDelete = state.selectedStudent && (state.selectedStudent.name === hw.author || state.selectedStudent.isStarosta);
-                const deleteBtn = canDelete ? `<button onclick="promptDeleteHw('${hw.id}')" class="px-3 py-1.5 bg-red-50 text-red-600 border border-red-200 dark:bg-red-500/10 dark:text-red-500 rounded-xl text-[10px] font-bold uppercase transition hover:bg-red-100 dark:hover:bg-red-500/20 dark:border-red-500/20 flex items-center gap-1"><i class="ph ph-trash"></i> Видалити</button>` : '';
-                const deadlineHtml = hw.deadline && hw.deadline !== 'Не вказано' ? `<div class="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 bg-rose-50 text-rose-600 border border-rose-200 dark:bg-rose-500/10 dark:text-rose-400 rounded-xl dark:border-rose-500/20 text-[10px] font-extrabold uppercase tracking-wide"><i class="ph-fill ph-clock"></i> Дедлайн: ${hw.deadline}</div>` : '';
-
-                item.innerHTML = `
-                    <div class="flex flex-col md:flex-row justify-between md:items-start gap-4 mb-4">
-                        <div>
-                            <span class="inline-block px-3 py-1 bg-indigo-50 border border-indigo-200 dark:bg-indigo-500/10 dark:border-indigo-500/20 text-indigo-700 dark:text-indigo-400 rounded-lg text-[10px] font-extrabold uppercase tracking-tight mb-2">${hw.subj}</span>
-                            <div class="text-[11px] font-bold text-slate-600 dark:text-slate-500 flex flex-wrap items-center gap-2">
-                                <span>${hw.day}</span> &bull; <span>${hw.num} пара</span> &bull; <span class="text-indigo-600 dark:text-indigo-400">${weekLabel}</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <span class="text-[10px] font-mono font-bold text-slate-700 dark:text-slate-400 glass-card px-3 py-1.5 rounded-xl shadow-sm">${hw.date}</span>
-                            ${deleteBtn}
-                        </div>
-                    </div>
-                    <div class="text-sm font-bold text-slate-900 dark:text-zinc-200 mb-5 glass-input p-5 rounded-2xl shadow-sm border leading-relaxed">
-                        ${hw.text.replace(/\n/g, '<br>')}
-                        ${deadlineHtml}
-                    </div>
-                    <div class="flex items-center gap-3 border-t border-slate-300/60 dark:border-white/10 pt-4">
-                        <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 border border-indigo-200 dark:bg-indigo-500/20 dark:text-indigo-400 flex items-center justify-center text-xs font-black">${hw.author.charAt(0)}</div>
-                        <span class="text-xs font-bold text-slate-900 dark:text-slate-200 flex items-center gap-1">${hw.author} ${starostaBadge}</span>
-                    </div>
-                `;
-                list.appendChild(item);
-            });
-        }
-
-        function openMaterialModal() {
-            const m = document.getElementById('material-modal');
-            m.classList.remove('hidden');
-            setTimeout(() => m.style.opacity = 1, 10);
-            document.getElementById('mat-title').value = '';
-            document.getElementById('mat-url').value = '';
-            document.getElementById('mat-subj').value = 'Загальне';
-        }
-        function closeMaterialModal() { 
-            const m = document.getElementById('material-modal');
-            m.style.opacity = 0;
-            setTimeout(() => m.classList.add('hidden'), 300);
-        }
-
-        async function saveMaterial() {
-            const titleInput = document.getElementById('mat-title');
-            const urlInput = document.getElementById('mat-url');
-            if(!titleInput.value.trim() || !urlInput.value.trim()) return;
-            
-            let url = urlInput.value.trim();
-            if(!url.startsWith('http')) url = 'https://' + url;
-
-            const docId = Date.now().toString();
-            const newMaterial = { id: docId, title: titleInput.value.trim(), url: url, subj: document.getElementById('mat-subj').value, author: state.selectedStudent.name, date: new Date().toLocaleDateString('uk-UA') };
-            
-            if (window.saveToCloud) {
-                const success = await window.saveToCloud('materials', docId, newMaterial);
-                if (!success) fallbackSaveMaterial(newMaterial);
-            } else {
-                fallbackSaveMaterial(newMaterial);
-            }
-            closeMaterialModal();
-        }
-
-        function fallbackSaveMaterial(newMaterial) {
-            globalMaterials.unshift(newMaterial);
-            localStorage.setItem('portal-template-mat', JSON.stringify(globalMaterials));
-            if(state.view === 'materials') renderMaterials();
-        }
-
-        async function deleteMaterial(id) {
-            if (window.deleteFromCloud) {
-                const success = await window.deleteFromCloud('materials', id);
-                if (!success) fallbackDeleteMaterial(id);
-            } else {
-                fallbackDeleteMaterial(id);
-            }
-        }
-        
-        function fallbackDeleteMaterial(id) {
-            globalMaterials = globalMaterials.filter(m => m.id != id);
-            localStorage.setItem('portal-template-mat', JSON.stringify(globalMaterials));
-            if (state.view === 'materials') renderMaterials();
-        }
-
-        function setMaterialFilter(subj) { currentMaterialFilter = subj; renderMaterials(); }
-
-        function renderMaterials() {
-            const filterContainer = document.getElementById('material-filters');
-            const grid = document.getElementById('materials-grid');
-            const subjectsInUse = ['Всі', 'Загальне', ...new Set(globalMaterials.map(m => m.subj).filter(s => s !== 'Загальне'))].sort();
-            
-            filterContainer.innerHTML = subjectsInUse.map(s => {
-                const activeClass = currentMaterialFilter === s ? 'bg-indigo-600 text-white shadow-md border-indigo-500' : 'glass-card text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white';
-                return `<button onclick="setMaterialFilter('${s}')" class="px-5 py-2.5 rounded-xl border text-[11px] font-bold uppercase transition-all whitespace-nowrap ${activeClass}">${s}</button>`;
-            }).join('');
-
-            grid.innerHTML = '';
-            const filtered = currentMaterialFilter === 'Всі' ? globalMaterials : globalMaterials.filter(m => m.subj === currentMaterialFilter);
-
-            if (filtered.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center p-12 text-slate-600 font-extrabold border-2 border-dashed border-slate-300 dark:text-slate-500 dark:border-white/10 rounded-[2rem] liquid-glass opacity-0 animate-fade-in-up">Поки що порожньо.</div>`;
-                return;
-            }
-
-            filtered.forEach((m, index) => {
-                const authorObj = students.find(s => s.name === m.author);
-                const starostaBadge = authorObj && authorObj.isStarosta ? `<span class="text-amber-600 dark:text-amber-500 text-[9px] ml-1 font-bold uppercase">Адмін</span>` : '';
-                
-                const canDelete = state.selectedStudent && (state.selectedStudent.name === m.author || state.selectedStudent.isStarosta);
-                const deleteBtn = canDelete ? `<button onclick="promptDeleteMaterial('${m.id}')" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center glass-card text-slate-500 hover:text-red-500 rounded-xl transition-all shadow-sm"><i class="ph ph-trash"></i></button>` : '';
-
-                let iconClass = 'ph-link';
-                let iconColor = 'text-indigo-600 dark:text-indigo-500';
-                const lowerUrl = m.url.toLowerCase();
-                if(lowerUrl.includes('drive.google') || lowerUrl.includes('docs.google')) { iconClass = 'ph-google-drive-logo'; iconColor = 'text-green-600 dark:text-green-500'; }
-                if(lowerUrl.includes('t.me') || lowerUrl.includes('telegram')) { iconClass = 'ph-telegram-logo'; iconColor = 'text-blue-600 dark:text-blue-500'; }
-                if(lowerUrl.includes('zoom.us')) { iconClass = 'ph-video-camera'; iconColor = 'text-blue-600 dark:text-blue-500'; }
-                if(lowerUrl.includes('youtube.com') || lowerUrl.includes('youtu.be')) { iconClass = 'ph-youtube-logo'; iconColor = 'text-red-600 dark:text-red-500'; }
-
-                const card = document.createElement('div');
-                card.className = "liquid-glass p-6 rounded-[2rem] hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative flex flex-col h-full z-10 opacity-0 animate-fade-in-up";
-                card.style.animationDelay = `${index * 100}ms`;
-                
-                card.innerHTML = `
-                    ${deleteBtn}
-                    <div class="mb-5">
-                        <span class="inline-block px-2.5 py-1 bg-white text-slate-800 border border-slate-200 dark:bg-black/30 dark:border-white/10 rounded-lg text-[9px] font-extrabold uppercase dark:text-indigo-400 mb-4 shadow-sm">${m.subj}</span>
-                        <h3 class="font-extrabold text-lg leading-tight text-slate-900 dark:text-white pr-10 flex items-start gap-2"><i class="ph-fill ${iconClass} ${iconColor} mt-1 text-xl shrink-0"></i> ${m.title}</h3>
-                    </div>
-                    <div class="mt-auto pt-5 border-t border-slate-300/60 dark:border-white/10 flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <div class="w-8 h-8 rounded-full glass-card flex items-center justify-center text-xs font-black text-slate-700 dark:text-slate-400 shadow-sm">${m.author.charAt(0)}</div>
-                            <div class="flex flex-col">
-                                <span class="text-[10px] font-extrabold text-slate-900 dark:text-slate-300 flex items-center">${m.author.split(' ')[0]} ${starostaBadge}</span>
-                                <span class="text-[9px] font-mono font-bold text-slate-500 mt-0.5">${m.date}</span>
-                            </div>
-                        </div>
-                        <a href="${m.url}" target="_blank" class="px-4 py-2 bg-indigo-50 text-indigo-700 border border-indigo-200 dark:bg-indigo-500/10 dark:border-indigo-500/20 dark:text-indigo-400 rounded-xl text-[10px] font-extrabold uppercase hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition-all hover:scale-105 flex items-center gap-1 shadow-sm"><i class="ph-bold ph-arrow-square-out text-sm"></i> Відкрити</a>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function updateLiveStatus() {
-            const now = new Date();
-            const days = ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця", "Субота"];
-            const curDay = days[now.getDay()];
-            const time = now.toTimeString().slice(0,5);
-            let cur = null, nxt = null;
-            for(let i=0; i<timeSlots.length; i++) {
-                if(time >= timeSlots[i].start && time <= timeSlots[i].end) { cur = {...timeSlots[i], idx: i+1}; break; }
-                if(time < timeSlots[i].start) { nxt = {...timeSlots[i], idx: i+1}; break; }
-            }
-            const el = document.getElementById('current-pair-text');
-            const timerEl = document.getElementById('elapsed-timer');
-            const label = document.getElementById('timer-label');
-            const today = (scheduleData[state.genWeek] || []).find(d => d.day === curDay);
-            if(cur) {
-                label.innerText = "До кінця пари";
-                const subj = today?.pairs.find(p => p.num === cur.idx)?.subj || "Заняття";
-                el.innerHTML = `<span class='font-medium opacity-60 mr-2'>${cur.idx} Пара:</span> ${subj}`;
-                timerEl.innerText = calculateDiff(cur.end, now);
-            } else if(nxt) {
-                label.innerText = "До початку пари";
-                const s = today?.pairs.find(p => p.num === nxt.idx)?.subj || "...";
-                el.innerHTML = `<span class='font-medium opacity-60 mr-2'>Наступна (${nxt.idx} пара):</span> ${s}`;
-                timerEl.innerText = calculateDiff(nxt.start, now);
-            } else {
-                label.innerText = "Поточний час";
-                el.innerHTML = `<span class='opacity-50 italic'>Пари завершено ☕</span>`;
-                timerEl.innerText = now.toLocaleTimeString('uk-UA');
-            }
-        }
-
-        function calculateDiff(t, now) {
-            const [h,m] = t.split(':').map(Number);
-            const tgt = new Date(now); tgt.setHours(h,m,0,0);
-            const d = Math.max(0, Math.floor((tgt-now)/1000));
-            return `${Math.floor(d/3600).toString().padStart(2,'0')}:${Math.floor((d%3600)/60).toString().padStart(2,'0')}:${(d%60).toString().padStart(2,'0')}`;
-        }
-
-        function renderRegister() {
-            const body = document.getElementById('reg-table-body'); body.innerHTML = '';
-            const q = document.getElementById('global-search').value.toLowerCase();
-            const l = document.getElementById('lang-filter').value;
-            let counter = 0;
-            students.filter(s => s.name.toLowerCase().includes(q) && (l === 'all' || s.electives.includes(l))).forEach((s, i) => {
-                const tr = document.createElement('tr');
-                tr.className = "hover:bg-white/60 dark:hover:bg-white/5 transition-colors group opacity-0 animate-fade-in-up";
-                tr.style.animationDelay = `${counter * 50}ms`;
-                counter++;
-                const b = s.electives.map(e => `<span class="px-2.5 py-1 rounded-lg text-[9px] font-extrabold uppercase border shadow-sm ${discColors[e] || 'bg-slate-100 dark:bg-slate-800'}">${e.replace('_', ' ')}</span>`).join(' ');
-                const starostaBadge = s.isStarosta ? `<span class="ml-2 px-1.5 py-0.5 bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-500/20 dark:text-amber-400 text-[9px] font-bold uppercase rounded-md border dark:border-amber-500/30 inline-flex shadow-sm">Адмін</span>` : '';
-                tr.innerHTML = `<td class="p-4 text-xs font-bold text-slate-500 w-10 text-center border-b border-slate-300/50 dark:border-white/5">${i+1}</td><td class="p-4 font-extrabold text-sm text-slate-900 dark:text-zinc-200 group-hover:text-indigo-600 transition-colors border-b border-slate-300/50 dark:border-white/5">${s.name} ${starostaBadge}</td><td class="p-4 flex flex-wrap gap-1.5 border-b border-slate-300/50 dark:border-white/5">${b}</td>`;
-                body.appendChild(tr);
-            });
-        }
-
-        function setWeek(w, type) {
-            if(type === 'general') { state.genWeek = w; renderGeneralSchedule(); }
-            else { state.week = w; renderPersonalSchedule(); }
-            updateWeekSelectors();
-        }
-
-        function updateWeekSelectors() {
-            const weeks = [1, 2];
-            const weekLabels = { 1: "Тиждень 1", 2: "Тиждень 2" };
-            const make = (target, type) => weeks.map(w => {
-                const act = target === w;
-                const cls = act ? "solid-card shadow-md font-extrabold text-slate-900 dark:text-white" : "border border-transparent font-bold hover:bg-white/50 dark:hover:bg-white/5 text-slate-700 dark:text-slate-400";
-                return `<button onclick="event.stopPropagation(); setWeek(${w}, '${type}')" class="px-4 py-2.5 rounded-xl text-[11px] uppercase transition-all flex-shrink-0 min-w-[64px] relative z-10 ${cls}">${weekLabels[w]}</button>`;
-            }).join('');
-            const genSel = document.getElementById('week-selector-gen');
-            const persSel = document.getElementById('week-selector-pers');
-            if(genSel) genSel.innerHTML = make(state.genWeek, 'general');
-            if(persSel) persSel.innerHTML = make(state.week, 'personal');
-        }
-
-        function renderGeneralSchedule() {
-            const grid = document.getElementById('general-schedule-grid'); grid.innerHTML = '';
-            (scheduleData[state.genWeek] || []).forEach((day, index) => {
-                const card = document.createElement('div');
-                card.className = "liquid-glass p-6 md:p-8 flex flex-col relative z-10 opacity-0 animate-fade-in-up";
-                card.style.animationDelay = `${index * 100}ms`;
-                card.innerHTML = `<div class="flex justify-between items-center mb-5 border-b border-slate-300/60 dark:border-white/10 pb-4"><h3 class="font-extrabold text-slate-900 dark:text-white text-xl uppercase tracking-tight flex items-center gap-3"><div class="w-2 h-6 rounded-full bg-indigo-500/80"></div>${day.day}</h3><span class="text-[11px] font-mono font-extrabold text-slate-700 dark:text-slate-300 px-3 py-1 glass-card rounded-lg shadow-sm">${day.date}</span></div><div class="space-y-4 flex-grow">${day.pairs.map(p => renderPair(p, true)).join('')}</div>`;
-                grid.appendChild(card);
-            });
-            updateWeekSelectors();
-        }
-
-        function openZoomModal(subj) {
-            currentZoomSubj = subj;
-            const m = document.getElementById('zoom-modal');
-            m.classList.remove('hidden');
-            setTimeout(() => m.style.opacity = 1, 10);
-            document.getElementById('zoom-url-input').value = customZoomLinks[subj] || '';
-            document.getElementById('zoom-modal-title').innerText = subj;
-            setTimeout(() => document.getElementById('zoom-url-input').focus(), 100);
-        }
-
-        function closeZoomModal() { 
-            const m = document.getElementById('zoom-modal');
-            m.style.opacity = 0;
-            setTimeout(() => { m.classList.add('hidden'); currentZoomSubj = null; }, 300);
-        }
-
-        async function saveZoomLink() {
-            let url = document.getElementById('zoom-url-input').value.trim();
-            if(!url) return;
-            if(!url.startsWith('http')) url = 'https://' + url;
-
-            const safeId = currentZoomSubj.replace(/\//g, '_');
-
-            if (window.saveToCloud) {
-                const success = await window.saveToCloud('zoom_links', safeId, { url: url });
-                if (!success) fallbackSaveZoomLink(url);
-            } else {
-                fallbackSaveZoomLink(url);
-            }
-            closeZoomModal();
-        }
-
-        function fallbackSaveZoomLink(url) {
-            customZoomLinks[currentZoomSubj] = url;
-            localStorage.setItem('portal-template-zoom', JSON.stringify(customZoomLinks));
-            refreshViews(['schedule', 'main', 'lectures']);
-        }
-
-        function handleSearch() { renderRegister(); }
     </script>
 </body>
 </html>
